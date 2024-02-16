@@ -4,10 +4,10 @@ import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
 import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
-import { NoCompaniesResults } from "./NoCompaniesResults";
+import { EmptyState } from "./EmptyState";
 import { Badge } from "./ui/badge";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 10;
 
 export default function CompaniesList({
   searchParams,
@@ -36,7 +36,10 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <NoCompaniesResults />
+        <EmptyState
+          title="No companies found"
+          description="We couldn't find any companies matching your search."
+        />
       ) : (
         <div className="flex-1">
           <div className="mb-1 flex items-center justify-between text-sm text-muted-foreground ">

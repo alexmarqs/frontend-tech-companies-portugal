@@ -11,9 +11,7 @@ export default function CompaniesSearch({
   categoryOptions,
 }: CompaniesSearchProps) {
   return (
-    <Suspense
-      fallback={<div className="h-10 w-full bg-muted-foreground"></div>}
-    >
+    <Suspense>
       <SearchSideBar
         locationOptions={locationOptions}
         categoryOptions={categoryOptions}
