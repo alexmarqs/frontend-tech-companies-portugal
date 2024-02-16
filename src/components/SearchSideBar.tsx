@@ -73,74 +73,72 @@ export function SearchSideBar({
   };
 
   return (
-    <div>
-      <div className="sticky top-0 h-fit pt-2">
-        <aside className="mx-auto w-[96%] rounded-md border bg-background px-4 py-3 md:w-72">
-          <div className="text-md mb-4 flex items-center justify-between font-medium">
-            <div className="flex items-center gap-1">
-              <ListFilter className="h-4 w-4" />
-              Filters
-              {filtersNumber > 0 && (
-                <Badge className="rounded-full px-2" variant="secondary">
-                  {filtersNumber}
-                </Badge>
-              )}
-            </div>
+    <div className="sticky top-0 h-fit pt-1">
+      <aside className="mx-auto rounded-md border bg-background px-4 py-3 md:w-72">
+        <div className="text-md mb-4 flex items-center justify-between font-medium">
+          <div className="flex items-center gap-1">
+            <ListFilter className="h-4 w-4" />
+            Filters
+            {filtersNumber > 0 && (
+              <Badge className="rounded-full px-2" variant="secondary">
+                {filtersNumber}
+              </Badge>
+            )}
           </div>
-          <div className="space-y-4">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="query">Search term</Label>
-              <Input
-                id="query"
-                name="query"
-                onChange={(e) => {
-                  handleSearchTerm(e.target.value);
-                }}
-                placeholder="Name or description term"
-                defaultValue={query || ""}
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="category">Category</Label>
-              <Select
-                defaultValue={category || "all"}
-                onValueChange={handleCategoryChange}
-              >
-                <SelectTrigger id="category" className="w-full">
-                  <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All categories</SelectItem>
-                  {categoryOptions.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="location">Location</Label>
-              <Select
-                defaultValue={location || "all"}
-                onValueChange={handleLocationChange}
-              >
-                <SelectTrigger id="location" className="w-full">
-                  <SelectValue placeholder="Select a location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All locations</SelectItem>
-                  {locationOptions.map((location) => (
-                    <SelectItem key={location} value={location}>
-                      {location}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+        </div>
+        <div className="space-y-4">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="query">Search term</Label>
+            <Input
+              id="query"
+              name="query"
+              onChange={(e) => {
+                handleSearchTerm(e.target.value);
+              }}
+              placeholder="Name or description term"
+              defaultValue={query || ""}
+            />
           </div>
-        </aside>
-      </div>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="category">Category</Label>
+            <Select
+              defaultValue={category || "all"}
+              onValueChange={handleCategoryChange}
+            >
+              <SelectTrigger id="category" className="w-full">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All categories</SelectItem>
+                {categoryOptions.map((category) => (
+                  <SelectItem key={category} value={category}>
+                    {category}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="location">Location</Label>
+            <Select
+              defaultValue={location || "all"}
+              onValueChange={handleLocationChange}
+            >
+              <SelectTrigger id="location" className="w-full">
+                <SelectValue placeholder="Select a location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All locations</SelectItem>
+                {locationOptions.map((location) => (
+                  <SelectItem key={location} value={location}>
+                    {location}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }

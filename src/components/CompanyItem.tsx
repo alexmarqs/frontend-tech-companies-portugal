@@ -1,5 +1,5 @@
 import { Company } from "@/lib/types";
-import { ExternalLink, MapPin } from "lucide-react";
+import { ChevronRight, MapPin } from "lucide-react";
 import React from "react";
 import { Badge } from "./ui/badge";
 
@@ -11,25 +11,24 @@ export default function CompanyItem({
   company: { name, description, locations, categories },
 }: CompanyItemProps) {
   return (
-    <div className="group flex w-full flex-col gap-4 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40">
-      <div className="flex w-full gap-4">
-        <div className="flex-grow space-y-3">
-          <div className="space-y-1">
-            <div className="group flex items-center gap-2">
-              <h3 className="line-clamp-1 text-lg font-medium">{name}</h3>
-              <ExternalLink
-                className="hidden shrink-0 group-hover:block"
-                size={16}
-              />
+    <div className="group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40">
+      <div className="flex w-full flex-col gap-4">
+        <div className="flex w-full gap-4">
+          <div className="flex-grow space-y-3">
+            <div className="space-y-1">
+              <div className="group flex items-center gap-2">
+                <h3 className="line-clamp-1 text-lg font-medium">{name}</h3>
+              </div>
+              <p className="line-clamp-2 text-sm italic text-muted-foreground">
+                {description}
+              </p>
             </div>
-            <p className="line-clamp-2 text-sm italic text-muted-foreground">
-              {description}
-            </p>
           </div>
+          <Categories categories={categories || []} />
         </div>
-        <Categories categories={categories || []} />
+        <Locations locations={locations || []} />
       </div>
-      <Locations locations={locations || []} />
+      <ChevronRight className="shrink-0 self-center" size={24} />
     </div>
   );
 }
