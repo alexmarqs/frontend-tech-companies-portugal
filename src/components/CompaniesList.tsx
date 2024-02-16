@@ -2,11 +2,12 @@ import { Company, SearchParams } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
+import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
 import { NoCompaniesResults } from "./NoCompaniesResults";
 import { Badge } from "./ui/badge";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 6;
 
 export default function CompaniesList({
   searchParams,
@@ -30,6 +31,7 @@ export default function CompaniesList({
   );
 
   const paginatedCompanies = filteredCompanies.slice(start, end);
+  const totalPages = Math.ceil(filteredCompanies.length / PAGE_SIZE);
 
   return (
     <>
@@ -44,11 +46,15 @@ export default function CompaniesList({
             </Badge>
             {filteredCompanies.length} companies found.
           </div>
-
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company) => (
               <CompanyItem company={company} key={company.slug} />
             ))}
+            <CompaniesListPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              searchParams={searchParams}
+            />
           </div>
         </div>
       )}

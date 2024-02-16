@@ -28,7 +28,10 @@ export default function CompanyItem({
         </div>
         <Locations locations={locations || []} />
       </div>
-      <ChevronRight className="shrink-0 self-center" size={24} />
+      <ChevronRight
+        className="shrink-0 self-center text-muted-foreground"
+        size={24}
+      />
     </div>
   );
 }
