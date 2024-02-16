@@ -1,0 +1,109 @@
+import { load as cheerioLoad } from "cheerio";
+import slugify from "slugify";
+import { Company } from "./types";
+
+export const parseCompaniesData = async () => {
+  // fetching the html from the github api
+  const htmlData = await fetchGithubReadmeHtmlFrom(
+    "marmelo",
+    "tech-companies-in-portugal",
+  );
+
+  // extracting the data from the html to a list of companies json
+  const data = extractCompaniesDataFromHtml(htmlData);
+
+  return data;
+};
+
+const fetchGithubReadmeHtmlFrom = async (owner: string, repo: string) => {
+  const url = `https://api.github.com/repos/${owner}/${repo}/readme`;
+
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/vnd.github.v3.html",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`GitHub API request failed: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+
+  return html;
+};
+
+const extractCompaniesDataFromHtml = (html: string) => {
+  const $ = cheerioLoad(html);
+
+  const companies: Company[] = [];
+  const availableCategories = new Set<string>();
+  const availableLocations = new Set<string>();
+
+  $("h2").each((_, element) => {
+    const category = $(element).text().trim();
+    const nextSibling = $(element).next();
+
+    if (nextSibling.is("table")) {
+      availableCategories.add(category);
+
+      nextSibling.find("tr").each((index, row) => {
+        if (index === 0) return;
+
+        const columns = $(row).find("td");
+        const links = $(columns[0]).find("a");
+        const name = links.first().text();
+        const locations = $(columns[2])
+          .find("code")
+          .map((_, code) => {
+            // sanitize the location
+            return sanitizeLocation($(code).text());
+          })
+          .get();
+
+        locations.forEach((location) => availableLocations.add(location));
+
+        const company: Company = {
+          slug: slugify(name, { lower: true }),
+          name: name,
+          websiteUrl: links.first().attr("href") || "",
+          careersUrl: "",
+          githubUrl: "",
+          description: $(columns[1]).text(),
+          locations: locations,
+          categories: category,
+        };
+
+        links.each((_, link) => {
+          const href = $(link).attr("href");
+          const linkText = $(link).text();
+
+          if (linkText === "🚀") {
+            company.careersUrl = href || "";
+          } else if (linkText === "") {
+            company.githubUrl = href || "";
+          }
+        });
+
+        companies.push(company);
+      });
+    }
+  });
+
+  return {
+    companies,
+    availableCategories: Array.from(availableCategories),
+    availableLocations: Array.from(availableLocations),
+  };
+};
+
+// In some cases we have the same location with different names
+const sanitizeLocation = (location: string) => {
+  if (location === "Lisbon") {
+    return "Lisboa";
+  } else if (location === "remote") {
+    return "Remote";
+  }
+
+  return location;
+};
