@@ -1,6 +1,7 @@
 import CompaniesList from "@/components/CompaniesList";
 import CompaniesSearch from "@/components/CompaniesSearch";
-import { getParsedCompaniesData } from "@/lib/fetchers";
+import { getParsedCompaniesData } from "@/lib/actions/companies";
+
 import { SearchParams } from "@/lib/types";
 
 export default async function CompaniesPage({

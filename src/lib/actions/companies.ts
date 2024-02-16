@@ -1,5 +1,7 @@
+"use server";
+
 import { unstable_cache as cache } from "next/cache";
-import { parseCompaniesData } from "./parser";
+import { parseCompaniesData } from "../parser";
 
 export const getParsedCompaniesData = cache(
   async () => {
