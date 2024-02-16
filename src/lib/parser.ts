@@ -99,11 +99,10 @@ const extractCompaniesDataFromHtml = (html: string) => {
 
 // In some cases we have the same location with different names
 const sanitizeLocation = (location: string) => {
-  if (location === "Lisbon") {
-    return "Lisboa";
-  } else if (location === "remote") {
-    return "Remote";
-  }
+  return locationSanitizerMap[location] || location;
+};
 
-  return location;
+const locationSanitizerMap: Record<string, string> = {
+  Lisbon: "Lisboa",
+  remote: "Remote",
 };
