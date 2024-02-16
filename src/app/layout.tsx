@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Tech companies in Portugal 🇵🇹",
   description:
-    "The most comprehensive list of tech companies in Portugal, all in one place. Made with ❤️ by the community, for the community.",
+    "The most comprehensive list of tech companies in Portugal, all in one place.",
 };
 
 export default function RootLayout({ children }: LayoutProps) {
