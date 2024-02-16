@@ -1,4 +1,5 @@
 import { Company, SearchParams } from "@/lib/types";
+import { matchCompanies } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
 import CompanyItem from "./CompanyItem";
@@ -54,19 +55,3 @@ export default function CompaniesList({
     </>
   );
 }
-
-const matchCompanies = (
-  company: Company,
-  query: string,
-  category: string,
-  location: string,
-) => {
-  const searchTerm = `${company.name} ${company.description}`.toLowerCase();
-  return (
-    (!query || searchTerm.includes(query.toLowerCase())) &&
-    (!category || Array.isArray(company?.categories)
-      ? company.categories.includes(category)
-      : company.categories === category) &&
-    (!location || company?.locations?.includes(location))
-  );
-};
