@@ -12,4 +12,11 @@ This is a **frontend** (non official) for the github repository [tech-companies-
 
 ## How to contribute 🤝
 
-No requirements, just clone the repository and start coding. If you want to add a new feature, please open an issue first to discuss it.
+### Frontend App
+
+No requirements, just open a pull request with your changes.
+If you want to add a new feature, please open an issue first to discuss it.
+
+### Edit or Add new company
+
+If you want to add a new company, please open a pull request in the [tech-companies-in-portugal](https://github.com/marmelo/tech-companies-in-portugal) repository, following the instructions there.
