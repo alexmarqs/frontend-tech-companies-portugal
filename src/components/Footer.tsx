@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="bg-background py-2 text-center">
       <div className="container">
-        <p className="text-xs text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Crafted with ❤️ by{" "}
           <a
             href="
