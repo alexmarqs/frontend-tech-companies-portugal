@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { fontCalsans, fontInter } from "@/fonts/utils";
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -20,7 +22,9 @@ export default function RootLayout({ children }: LayoutProps) {
           fontCalsans.variable,
         )}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

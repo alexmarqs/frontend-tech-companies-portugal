@@ -1,8 +1,8 @@
 export default function CompaniesHeader() {
   return (
-    <section className="mx-auto max-w-3xl space-y-4 py-12 text-center">
+    <section className="mx-auto max-w-3xl space-y-4 py-11 text-center">
       <h1 className="font-calsans text-3xl tracking-tight">
-        Tech Companies in Portugal 🇵🇹
+        Explore Tech Companies in Portugal 🇵🇹
       </h1>
       <p className="text-muted-foreground">
         The most comprehensive list of tech companies in Portugal, all in one

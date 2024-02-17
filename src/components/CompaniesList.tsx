@@ -37,6 +37,7 @@ export default function CompaniesList({
     <>
       {!paginatedCompanies.length ? (
         <EmptyState
+          className="h-full w-full md:flex-none"
           title="No companies found"
           description="We couldn't find any companies matching your search."
         />
