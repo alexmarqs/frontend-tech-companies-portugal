@@ -21,3 +21,9 @@ export const getParsedCompaniesData = cache(
     tags: ["companies"],
   },
 );
+
+export const getParsedCompanyBySlug = async (slug: string) => {
+  const { companies } = await getParsedCompaniesData();
+
+  return companies.find((company) => company.slug === slug);
+};

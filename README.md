@@ -1,6 +1,6 @@
 # Tech Companies in Portugal 🇵🇹 🚀
 
-This is a **frontend** (non official) for the github repository [tech-companies-in-portugal](https://github.com/marmelo/tech-companies-in-portugal). The main goal is to provide a better way to explore tech companies in Portugal. **Easy to use, easy to share and easy to contribute.**
+The main goal is to provide a better way to explore tech companies in Portugal.
 
 ## Tech stack 🧑‍💻
 

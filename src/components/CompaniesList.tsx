@@ -7,7 +7,7 @@ import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
 import { Badge } from "./ui/badge";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 15;
 
 export default function CompaniesList({
   searchParams,

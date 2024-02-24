@@ -1,5 +1,6 @@
 import { Company } from "@/lib/types";
 import { ChevronRight, MapPin } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 import { Badge } from "./ui/badge";
 
@@ -8,10 +9,13 @@ type CompanyItemProps = {
 };
 
 export default function CompanyItem({
-  company: { name, description, locations, categories },
+  company: { name, description, locations, categories, slug },
 }: CompanyItemProps) {
   return (
-    <div className="group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40">
+    <Link
+      className="group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40"
+      href={`/company/${slug}`}
+    >
       <div className="flex w-full flex-col gap-4">
         <div className="flex w-full gap-4">
           <div className="flex-grow space-y-3">
@@ -32,11 +36,11 @@ export default function CompanyItem({
         className="shrink-0 self-center text-muted-foreground"
         size={24}
       />
-    </div>
+    </Link>
   );
 }
 
-const Locations = ({ locations }: { locations: string[] }) => {
+export const Locations = ({ locations }: { locations: string[] }) => {
   return (
     <div className="flex flex-wrap items-center gap-1 text-xs font-medium">
       <MapPin className="shrink-0" size={16} />
@@ -54,7 +58,11 @@ const Locations = ({ locations }: { locations: string[] }) => {
   );
 };
 
-const Categories = ({ categories }: { categories: string[] | string }) => {
+export const Categories = ({
+  categories,
+}: {
+  categories: string[] | string;
+}) => {
   const categoriesArray = Array.isArray(categories) ? categories : [categories];
 
   return (
