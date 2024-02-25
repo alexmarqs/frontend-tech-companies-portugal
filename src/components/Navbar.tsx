@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <header className="bg-background py-2 shadow-sm">
       <div className="container mx-auto flex h-full items-center justify-between px-3">
-        <Link href="/" className="flex items-center gap-1">
+        <Link prefetch={false} href="/" className="flex items-center gap-1">
           <Image
             src="/logo.png"
             priority

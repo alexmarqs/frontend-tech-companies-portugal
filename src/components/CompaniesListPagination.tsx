@@ -1,4 +1,3 @@
-import { SearchParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
   ChevronLeft,
@@ -7,12 +6,13 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import Link from "next/link";
+import { ReadonlyURLSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 
 type CompaniesListPaginationProps = {
   currentPage: number;
   totalPages: number;
-  searchParams?: SearchParams;
+  searchParams?: ReadonlyURLSearchParams;
 };
 
 export default function CompaniesListPagination({

@@ -6,7 +6,7 @@ export default function Footer() {
           Crafted with ❤️ by{" "}
           <a
             href="
-            https://github.com/alexmarqs/frontend-tech-companies-portugal"
+            https://twitter.com/alexlmarques"
             target="_blank"
             rel="noreferrer"
             className="underline"

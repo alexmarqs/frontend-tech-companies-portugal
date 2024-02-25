@@ -1,6 +1,6 @@
 export default function CompaniesHeader() {
   return (
-    <section className="mx-auto max-w-3xl space-y-4 py-11 text-center">
+    <section className="space-y-4 py-11 text-center">
       <h1 className="font-calsans text-3xl tracking-tight">
         Explore Tech Companies in Portugal 🇵🇹
       </h1>

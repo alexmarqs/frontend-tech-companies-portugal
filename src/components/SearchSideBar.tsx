@@ -2,7 +2,6 @@
 
 import { ChevronDown, ChevronUp, ListFilter } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
@@ -30,20 +29,21 @@ export function SearchSideBar({
   locationOptions,
   categoryOptions,
 }: SearchSideBarProps) {
-  const searchParams = useSearchParams();
-  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(true);
-
-  const query = searchParams.get("query");
-  const category = searchParams.get("category");
-  const location = searchParams.get("location");
-
+  const initialSearchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(true);
+  const [searchParamsData, setSearchParamsData] =
+    useState<URLSearchParams>(initialSearchParams);
+
+  const query = searchParamsData.get("query")?.toString();
+  const category = searchParamsData.get("category")?.toString();
+  const location = searchParamsData.get("location")?.toString();
 
   const filtersNumber = [query, category, location].filter(Boolean).length;
 
-  const handleSearchTerm = useDebouncedCallback((term) => {
-    const params = new URLSearchParams(searchParams);
+  const handleSearchTerm = (term: string) => {
+    const params = new URLSearchParams(searchParamsData);
     params.delete("page");
 
     if (term) {
@@ -52,11 +52,13 @@ export function SearchSideBar({
       params.delete("query");
     }
 
-    router.replace(`${pathname}?${params.toString()}`);
-  }, 250);
+    setSearchParamsData(params);
+
+    history.replaceState(null, "", `${pathname}?${params.toString()}`);
+  };
 
   const handleCategoryChange = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParamsData);
     params.delete("page");
 
     if (value === "all" || !value) {
@@ -64,11 +66,14 @@ export function SearchSideBar({
     } else {
       params.set("category", value);
     }
-    router.replace(`${pathname}?${params.toString()}`);
+
+    setSearchParamsData(params);
+
+    history.replaceState(null, "", `${pathname}?${params.toString()}`);
   };
 
   const handleLocationChange = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParamsData);
     params.delete("page");
 
     if (value === "all" || !value) {
@@ -76,7 +81,10 @@ export function SearchSideBar({
     } else {
       params.set("location", value);
     }
-    router.replace(`${pathname}?${params.toString()}`);
+
+    setSearchParamsData(params);
+
+    history.replaceState(null, "", `${pathname}?${params.toString()}`);
   };
 
   return (
@@ -115,14 +123,14 @@ export function SearchSideBar({
                   onChange={(e) => {
                     handleSearchTerm(e.target.value);
                   }}
+                  value={query}
                   placeholder="Name or description term"
-                  defaultValue={query || ""}
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
-                  defaultValue={category || "all"}
+                  value={category || "all"}
                   onValueChange={handleCategoryChange}
                 >
                   <SelectTrigger id="category" className="w-full">
@@ -141,7 +149,7 @@ export function SearchSideBar({
               <div className="flex flex-col gap-2">
                 <Label htmlFor="location">Location</Label>
                 <Select
-                  defaultValue={location || "all"}
+                  value={location || "all"}
                   onValueChange={handleLocationChange}
                 >
                   <SelectTrigger id="location" className="w-full">

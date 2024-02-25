@@ -1,7 +1,11 @@
-import { Company, SearchParams } from "@/lib/types";
+"use client";
+
+import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
@@ -10,24 +14,28 @@ import { Badge } from "./ui/badge";
 const PAGE_SIZE = 15;
 
 export default function CompaniesList({
-  searchParams,
   allCompanies,
   updatedAtISODate,
 }: {
-  searchParams?: SearchParams;
   allCompanies: Company[];
   updatedAtISODate: string;
 }) {
-  const query = searchParams?.query || "";
-  const category = searchParams?.category || "";
-  const location = searchParams?.location || "";
-  const currentPage = Number(searchParams?.page) || 1;
+  const searchParams = useSearchParams();
+
+  const query = searchParams.get("query") || "";
+  const category = searchParams.get("category") || "";
+  const location = searchParams.get("location") || "";
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   const start = (currentPage - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
 
-  const filteredCompanies = allCompanies.filter((company) =>
-    matchCompanies(company, query, category, location),
+  const filteredCompanies = useMemo(
+    () =>
+      allCompanies.filter((company) =>
+        matchCompanies(company, query, category, location),
+      ),
+    [allCompanies, query, category, location],
   );
 
   const paginatedCompanies = filteredCompanies.slice(start, end);
@@ -36,11 +44,13 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <EmptyState
-          className="h-full w-full md:flex-none"
-          title="No companies found"
-          description="We couldn't find any companies matching your search."
-        />
+        <div className="flex-1">
+          <EmptyState
+            className=""
+            title="No companies found"
+            description="We couldn't find any companies matching your search."
+          />
+        </div>
       ) : (
         <div className="flex-1">
           <div className="mb-1 flex items-center justify-between text-sm text-muted-foreground ">
