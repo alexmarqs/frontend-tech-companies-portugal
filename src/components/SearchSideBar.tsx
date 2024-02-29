@@ -171,6 +171,7 @@ export function SearchSideBar({
                 </Select>
               </div>
               <Button
+                disabled={filtersNumber === 0}
                 variant="outline"
                 className="h-9 w-full px-2"
                 onClick={handleResetFilters}

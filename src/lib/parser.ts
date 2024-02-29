@@ -3,16 +3,21 @@ import slugify from "slugify";
 import { Company } from "./types";
 
 export const parseCompaniesData = async () => {
-  // fetching the html from the github api
-  const htmlData = await fetchGithubReadmeHtmlFrom(
-    "marmelo",
-    "tech-companies-in-portugal",
-  );
+  try {
+    // fetching the html from the github api
+    const htmlData = await fetchGithubReadmeHtmlFrom(
+      "marmelo",
+      "tech-companies-in-portugal",
+    );
 
-  // extracting the data from the html to a list of companies json
-  const data = extractCompaniesDataFromHtml(htmlData);
+    // extracting the data from the html to a list of companies json
+    const data = extractCompaniesDataFromHtml(htmlData);
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error("Error parsing companies data", error);
+    throw error;
+  }
 };
 
 const fetchGithubReadmeHtmlFrom = async (owner: string, repo: string) => {
@@ -42,7 +47,7 @@ const extractCompaniesDataFromHtml = (html: string) => {
 
   $("h2").each((_, element) => {
     const category = $(element).text().trim();
-    const nextSibling = $(element).next();
+    const nextSibling = $(element).parent().next();
 
     if (nextSibling.is("table")) {
       availableCategories.add(category);
@@ -89,6 +94,10 @@ const extractCompaniesDataFromHtml = (html: string) => {
       });
     }
   });
+
+  if (companies.length === 0) {
+    throw new Error("No companies data found");
+  }
 
   return {
     companies,
