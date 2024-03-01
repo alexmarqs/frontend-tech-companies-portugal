@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { getParsedCompanyBySlug } from "@/lib/actions/companies";
 import { Briefcase, Globe } from "lucide-react";
 import { notFound } from "next/navigation";
+import { Metadata } from "next/types";
 
 // force generation on demand for paths not known at build time
 export const dynamicParams = true;
@@ -11,6 +12,26 @@ export const dynamicParams = true;
 export async function generateStaticParams() {
   // in this case let's not generate any static paths, we will generate them on demand
   return [];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata | void> {
+  // read route params
+  const slug = params.slug;
+
+  // fetch data
+  const product = await getParsedCompanyBySlug(slug);
+
+  if (!product) {
+    return;
+  }
+
+  return {
+    title: `${product.name} | Tech companies in Portugal 🇵🇹`,
+  };
 }
 
 export default async function CompanyPage({
