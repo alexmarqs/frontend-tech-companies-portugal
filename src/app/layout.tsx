@@ -1,15 +1,24 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { fontCalsans, fontInter } from "@/lib/fonts";
+import {
+  defaultMetadata,
+  defaultOpenGraphMetadata,
+  defaultTwitterMetadata,
+} from "@/lib/metadata";
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
+import { Metadata } from "next/types";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tech companies in Portugal 🇵🇹",
-  description:
-    "The most comprehensive list of tech companies in Portugal, all in one place.",
+  ...defaultMetadata,
+  twitter: {
+    ...defaultTwitterMetadata,
+  },
+  openGraph: {
+    ...defaultOpenGraphMetadata,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps) {

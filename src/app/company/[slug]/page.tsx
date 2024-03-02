@@ -2,6 +2,12 @@ import { Categories, Locations } from "@/components/CompanyItem";
 import { CopyUrlButton } from "@/components/CopyUrlButton";
 import { Button } from "@/components/ui/button";
 import { getParsedCompanyBySlug } from "@/lib/actions/companies";
+import {
+  APP_URL,
+  defaultMetadata,
+  defaultOpenGraphMetadata,
+  defaultTwitterMetadata,
+} from "@/lib/metadata";
 import { Briefcase, Globe } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next/types";
@@ -19,19 +25,37 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata | void> {
-  // read route params
   const slug = params.slug;
 
-  // fetch data
   const product = await getParsedCompanyBySlug(slug);
 
   if (!product) {
     return;
   }
 
-  return {
-    title: `${product.name} | Tech companies in Portugal 🇵🇹`,
+  const title = `${product.name} | Tech companies in Portugal`;
+  const description = product.description;
+
+  const metadata: Metadata = {
+    ...defaultMetadata,
+    title,
+    description,
+    openGraph: {
+      ...defaultOpenGraphMetadata,
+      title,
+      description,
+      url: `${APP_URL}/company/${slug}`,
+      images: [`api/og?title=${product.name}&description=${description}`],
+    },
+    twitter: {
+      ...defaultTwitterMetadata,
+      title,
+      description,
+      images: [`api/og?title=${product.name}&description=${description}`],
+    },
   };
+
+  return metadata;
 }
 
 export default async function CompanyPage({
