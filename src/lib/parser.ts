@@ -25,7 +25,8 @@ const fetchGithubReadmeHtmlFrom = async (owner: string, repo: string) => {
 
   const response = await fetch(url, {
     headers: {
-      Accept: "application/vnd.github.v3.html",
+      Accept: "application/vnd.github.html+json",
+      "X-GitHub-Api-Version": "2022-11-28",
     },
   });
 
