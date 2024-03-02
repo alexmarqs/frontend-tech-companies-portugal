@@ -56,7 +56,7 @@ export default function CompaniesList({
           <div className="mb-1 flex items-center justify-between text-sm text-muted-foreground ">
             <Badge variant="secondary" className="flex items-center gap-1 px-1">
               <Clock size={16} />
-              Updated {formatDistanceToNow(new Date(updatedAtISODate))} ago.
+              Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago.
             </Badge>
             {filteredCompanies.length} companies found.
           </div>
