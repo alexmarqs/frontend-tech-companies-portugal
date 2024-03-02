@@ -5,7 +5,7 @@ export const NoCompaniesResults = () => {
     <div className="flex w-full flex-1 flex-col items-center justify-center gap-2">
       <Image
         priority
-        src="/empty.png"
+        src="/assets/images/empty.png"
         height="100"
         width="100"
         className="h-auto w-auto"

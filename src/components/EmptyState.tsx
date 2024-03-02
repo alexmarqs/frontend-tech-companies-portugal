@@ -23,7 +23,7 @@ export const EmptyState = ({
     >
       <Image
         priority
-        src={imagePath || "/empty.png"}
+        src={imagePath || "/assets/images/empty.png"}
         height="100"
         width="100"
         className="h-auto w-auto"

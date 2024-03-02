@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 const fontInter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const fontCalsans = localFont({
-  src: "./CalSans-SemiBold.woff2",
+  src: "../../public/assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-calsans",
 });
 

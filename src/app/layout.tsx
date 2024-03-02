@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { fontCalsans, fontInter } from "@/fonts/utils";
+import { fontCalsans, fontInter } from "@/lib/fonts";
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";

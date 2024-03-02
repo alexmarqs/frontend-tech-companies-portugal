@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-full items-center justify-between px-3">
         <Link prefetch={false} href="/" className="flex items-center gap-1">
           <Image
-            src="/logo.png"
+            src="/assets/images/logo.png"
             priority
             alt="Tech companies in Portugal Logo"
             width="40"
