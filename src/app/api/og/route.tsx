@@ -51,7 +51,7 @@ export async function GET(request: Request) {
             <img
               height="50"
               width="50"
-              src={`${APP_URL}/public/assets/images/logo.png`}
+              src={`${APP_URL}/assets/images/logo.png`}
               alt="Tech companies in Portugal Logo"
             />
             <div
