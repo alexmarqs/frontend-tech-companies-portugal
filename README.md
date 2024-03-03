@@ -9,7 +9,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - Search for companies (name and description terms)
 - Filter by location
 - Filter by category
-- SEO friendly - Open Graph and Twitter Cards meta tags included
+- SEO friendly - Open Graph and Twitter Cards meta tags included (shareable links)
 - Responsive design
 
 ## Tech stack 🧑‍💻
