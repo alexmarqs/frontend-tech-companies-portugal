@@ -1,13 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { APP_URL } from "@/lib/metadata";
 import { ImageResponse } from "next/og";
-import {
-  DESCRIPTION,
-  SIZE,
-  TITLE,
-  calSemiBold,
-  imageLogo,
-  interRegular,
-} from "./_utils";
+import { DESCRIPTION, SIZE, TITLE, calSemiBold, interRegular } from "./_utils";
 
 export const runtime = "edge";
 
@@ -22,8 +16,10 @@ export async function GET(request: Request) {
       (searchParams.has("description") && searchParams.get("description")) ||
       DESCRIPTION;
 
-    const [calSemiBoldData, interRegularData, imageLogoData] =
-      await Promise.all([calSemiBold, interRegular, imageLogo]);
+    const [calSemiBoldData, interRegularData] = await Promise.all([
+      calSemiBold,
+      interRegular,
+    ]);
 
     return new ImageResponse(
       (
@@ -53,8 +49,9 @@ export async function GET(request: Request) {
             }}
           >
             <img
+              height="50"
               width="50"
-              src={imageLogoData as unknown as string}
+              src={`${APP_URL}/public/assets/images/logo.png`}
               alt="Tech companies in Portugal Logo"
             />
             <div

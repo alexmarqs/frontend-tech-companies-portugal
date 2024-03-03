@@ -17,7 +17,3 @@ export const calSemiBold = fetch(
 export const interRegular = fetch(
   new URL("../../../../public/assets/fonts/Inter-Regular.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
-
-export const imageLogo = fetch(
-  new URL("../../../../public/assets/images/logo.png", import.meta.url),
-).then((res) => res.arrayBuffer());
