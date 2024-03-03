@@ -130,12 +130,12 @@ const LinkUrlButton = ({
       className="h-8 rounded-full px-2 text-xs text-foreground"
       asChild
     >
-      <div className="flex items-center gap-1">
-        {icon}
-        <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank" rel="noreferrer">
+        <div className="flex items-center gap-1">
+          {icon}
           {label}
-        </a>
-      </div>
+        </div>
+      </a>
     </Button>
   );
 };

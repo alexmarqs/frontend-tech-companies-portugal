@@ -26,4 +26,5 @@ export const defaultOpenGraphMetadata: Metadata["openGraph"] = {
   url: APP_URL,
   type: "website",
   siteName: TITLE,
+  images: [`api/og`],
 };
