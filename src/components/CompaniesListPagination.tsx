@@ -37,7 +37,7 @@ export default function CompaniesListPagination({
   };
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-2">
       <div className="flex basis-1/2 justify-end text-sm text-muted-foreground">
         Page {currentPage} of {totalPages}
       </div>

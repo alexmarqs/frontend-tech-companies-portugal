@@ -53,7 +53,7 @@ export default function CompaniesList({
         </div>
       ) : (
         <div className="flex-1">
-          <div className="mb-1 flex items-center justify-between text-sm text-muted-foreground ">
+          <div className="mb-1 flex flex-wrap items-center justify-between text-sm text-muted-foreground ">
             <Badge variant="secondary" className="flex items-center gap-1 px-1">
               <Clock size={16} />
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago.

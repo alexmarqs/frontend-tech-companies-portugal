@@ -17,19 +17,13 @@ export default function CompanyItem({
       href={`/company/${slug}`}
     >
       <div className="flex w-full flex-col gap-4">
-        <div className="flex w-full gap-4">
-          <div className="flex-grow space-y-3">
-            <div className="space-y-1">
-              <div className="group flex items-center gap-2">
-                <h3 className="line-clamp-1 text-lg font-medium">{name}</h3>
-              </div>
-              <p className="line-clamp-2 text-sm italic text-muted-foreground">
-                {description}
-              </p>
-            </div>
-          </div>
+        <div className="flex w-full flex-wrap items-center justify-between gap-2">
+          <h3 className="line-clamp-1 text-lg font-medium">{name}</h3>
           <Categories categories={categories || []} />
         </div>
+        <p className="line-clamp-2 text-sm italic text-muted-foreground">
+          {description}
+        </p>
         <Locations locations={locations || []} />
       </div>
       <ChevronRight
@@ -66,18 +60,16 @@ export const Categories = ({
   const categoriesArray = Array.isArray(categories) ? categories : [categories];
 
   return (
-    <div>
-      <div className="flex flex-wrap items-center justify-center gap-1">
-        {categoriesArray.map((category, index) => (
-          <Badge
-            key={index}
-            variant="secondary"
-            className="text-nowrap rounded-md text-xs font-semibold tracking-wider"
-          >
-            {category}
-          </Badge>
-        ))}
-      </div>
+    <div className="flex flex-wrap items-center justify-center gap-1">
+      {categoriesArray.map((category, index) => (
+        <Badge
+          key={index}
+          variant="secondary"
+          className="text-nowrap rounded-md text-xs font-semibold tracking-wider"
+        >
+          {category}
+        </Badge>
+      ))}
     </div>
   );
 };
