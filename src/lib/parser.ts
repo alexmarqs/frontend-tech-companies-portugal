@@ -70,7 +70,7 @@ const extractCompaniesDataFromHtml = (html: string) => {
         locations.forEach((location) => availableLocations.add(location));
 
         const company: Company = {
-          slug: slugify(name, { lower: true }),
+          slug: slugify(name, { lower: true, strict: true }),
           name: name,
           websiteUrl: links.first().attr("href") || "",
           careersUrl: "",
