@@ -5,7 +5,6 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 ## Features 🚀
 
 - List of tech companies in Portugal synced with [tech-companies-in-portugal](https://github.com/marmelo/tech-companies-in-portugal)
-
 - Search for companies (name and description terms)
 - Filter by location
 - Filter by category

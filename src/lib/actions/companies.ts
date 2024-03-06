@@ -18,7 +18,6 @@ export const getParsedCompaniesData = cache(
   ["companies"],
   {
     revalidate: 21600, // 6 hours
-    tags: ["companies"],
   },
 );
 
