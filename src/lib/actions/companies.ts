@@ -1,5 +1,3 @@
-"use server";
-
 import { unstable_cache as cache } from "next/cache";
 import { cache as dedup } from "react";
 import { parseCompaniesData } from "../parser";
