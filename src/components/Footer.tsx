@@ -5,7 +5,7 @@ export default function Footer() {
         <p className="text-sm text-muted-foreground">
           Crafted with ❤️ by{" "}
           <a
-            href="https://links.alexandremarques.io/twitter"
+            href="https://alexandremarques.io"
             target="_blank"
             rel="noreferrer"
             className="underline"
