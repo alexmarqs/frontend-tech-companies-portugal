@@ -28,6 +28,9 @@ const fetchGithubReadmeHtmlFrom = async (owner: string, repo: string) => {
       Accept: "application/vnd.github.html+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
+    next: {
+      revalidate: 21600, // 6 hours
+    },
   });
 
   if (!response.ok) {
