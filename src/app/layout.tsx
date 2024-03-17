@@ -9,7 +9,7 @@ import {
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
-import { Metadata } from "next/types";
+import { Metadata, Viewport } from "next/types";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultOpenGraphMetadata,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  userScalable: false,
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({ children }: LayoutProps) {
