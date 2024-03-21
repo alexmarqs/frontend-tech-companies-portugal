@@ -28,3 +28,7 @@ export const defaultOpenGraphMetadata: Metadata["openGraph"] = {
   siteName: TITLE,
   images: [`api/og`],
 };
+
+export const verificationMetadata: Metadata["verification"] = {
+  google: "_YWvg85foYnXGeQrGSAdi1xkOUoJ1O50TO6YbWzadx8",
+};

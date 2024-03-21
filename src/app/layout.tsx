@@ -5,6 +5,7 @@ import {
   defaultMetadata,
   defaultOpenGraphMetadata,
   defaultTwitterMetadata,
+  verificationMetadata,
 } from "@/lib/metadata";
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...defaultOpenGraphMetadata,
+  },
+  verification: {
+    ...verificationMetadata,
   },
 };
 
