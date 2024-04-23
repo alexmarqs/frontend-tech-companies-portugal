@@ -1,5 +1,6 @@
 import { load as cheerioLoad } from "cheerio";
 import slugify from "slugify";
+import { featuredSlugCompanies } from "./featured";
 import { Company } from "./types";
 
 export const parseCompaniesData = async () => {
@@ -72,8 +73,10 @@ const extractCompaniesDataFromHtml = (html: string) => {
 
         locations.forEach((location) => availableLocations.add(location));
 
+        const slug = slugify(name, { lower: true, strict: true });
+
         const company: Company = {
-          slug: slugify(name, { lower: true, strict: true }),
+          slug: slug,
           name: name,
           websiteUrl: links.first().attr("href") || "",
           careersUrl: "",
@@ -81,6 +84,7 @@ const extractCompaniesDataFromHtml = (html: string) => {
           description: $(columns[1]).text(),
           locations: locations,
           categories: category,
+          isFeatured: featuredSlugCompanies.includes(slug),
         };
 
         links.each((_, link) => {

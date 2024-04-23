@@ -1,7 +1,7 @@
 "use client";
 
 import CompaniesList from "@/components/CompaniesList";
-import { SearchSideBar } from "@/components/SearchSideBar";
+import { SideBar } from "@/components/SideBar";
 
 export default function CompaniesClientPage({
   companies,
@@ -11,7 +11,7 @@ export default function CompaniesClientPage({
 }: any) {
   return (
     <section className="relative mt-4 flex flex-1 flex-col gap-6 md:flex-row">
-      <SearchSideBar
+      <SideBar
         categoryOptions={availableCategories}
         locationOptions={availableLocations}
       />

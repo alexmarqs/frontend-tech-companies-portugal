@@ -4,6 +4,13 @@ export const getParsedCompaniesData = async () => {
   const data = await parseCompaniesData();
   const updatedAtISODate = new Date().toISOString();
 
+  // sort data.companies by isFeatured first
+  data.companies.sort((a, b) => {
+    if (a.isFeatured && !b.isFeatured) return -1;
+    if (!a.isFeatured && b.isFeatured) return 1;
+    return 0;
+  });
+
   return {
     companies: data.companies,
     availableLocations: data.availableLocations,

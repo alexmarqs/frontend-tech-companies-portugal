@@ -90,7 +90,7 @@ export function SearchSideBar({
 
   return (
     <div className="h-fit shrink-0 pt-1 md:sticky md:top-0 ">
-      <aside className="mx-auto rounded-md border px-4 py-3 md:w-72">
+      <div className="mx-auto rounded-md border px-4 py-3 md:w-72">
         <Collapsible
           open={isCollapsibleOpen}
           onOpenChange={setIsCollapsibleOpen}
@@ -182,7 +182,7 @@ export function SearchSideBar({
             </div>
           </CollapsibleContent>
         </Collapsible>
-      </aside>
+      </div>
     </div>
   );
 }

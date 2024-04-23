@@ -9,7 +9,7 @@ type CompanyItemProps = {
 };
 
 export default function CompanyItem({
-  company: { name, description, locations, categories, slug },
+  company: { name, description, locations, categories, slug, isFeatured },
 }: CompanyItemProps) {
   return (
     <Link
@@ -18,7 +18,9 @@ export default function CompanyItem({
     >
       <div className="flex w-full flex-col gap-4">
         <div className="flex w-full flex-wrap items-center justify-between gap-2">
-          <h3 className="line-clamp-1 text-lg font-medium">{name}</h3>
+          <h3 className="line-clamp-1 flex items-center justify-center gap-2 text-lg font-medium">
+            {name} {isFeatured && <FeatureCompanyBadge />}
+          </h3>
           <Categories categories={categories || []} />
         </div>
         <p className="line-clamp-2 text-sm italic text-muted-foreground">
@@ -71,5 +73,19 @@ export const Categories = ({
         </Badge>
       ))}
     </div>
+  );
+};
+
+const FeatureCompanyBadge = () => {
+  return (
+    <Badge
+      variant="secondary"
+      className="flex items-center justify-between gap-1 text-nowrap rounded-md text-xs font-semibold tracking-wider"
+    >
+      <span className="bg-gradient-to-r from-green-400 to-red-500 bg-clip-text text-transparent">
+        Featured
+      </span>
+      <span>🔥</span>
+    </Badge>
   );
 };

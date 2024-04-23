@@ -7,6 +7,7 @@ export type Company = {
   githubUrl: string;
   categories: string[] | string;
   locations: string[];
+  isFeatured?: boolean;
 };
 
 export type LayoutProps = Readonly<{

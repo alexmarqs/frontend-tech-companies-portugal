@@ -4,7 +4,7 @@ export const TITLE = "Tech companies in Portugal";
 export const DESCRIPTION =
   "The most comprehensive list of tech companies in Portugal, all in one place.";
 export const APP_URL = process.env.VERCEL_URL
-  ? "https://tech-companies-portugal.vercel.app"
+  ? "https://tech-companies-pt.alexandremarques.io"
   : "http://localhost:3000";
 
 export const defaultMetadata: Metadata = {
