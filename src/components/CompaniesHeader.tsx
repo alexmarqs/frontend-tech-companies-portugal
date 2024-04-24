@@ -11,7 +11,7 @@ export default function CompaniesHeader() {
           href="https://github.com/marmelo/tech-companies-in-portugal"
           target="_blank"
           rel="noreferrer"
-          className="underline"
+          className="underline underline-offset-[2px]"
         >
           marmelo/tech-companies-in-portugal
         </a>{" "}

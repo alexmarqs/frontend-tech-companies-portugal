@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AnalyticsButton from "./AnalyticsButton";
 import ExploreButton from "./ExploreButton";
 import { Button } from "./ui/button";
 
@@ -23,6 +24,7 @@ export default function Navbar() {
           </div>
         </Link>
         <div className="flex items-center gap-2">
+          <AnalyticsButton />
           <ExploreButton />
           <Button asChild variant="outline">
             <a

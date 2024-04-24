@@ -1,4 +1,5 @@
 import { Company } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +14,10 @@ export default function CompanyItem({
 }: CompanyItemProps) {
   return (
     <Link
-      className="group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40"
+      className={cn(
+        "group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40",
+        isFeatured && "bg-gradient-to-r from-green-400/35 to-red-500/35",
+      )}
       href={`/company/${slug}`}
     >
       <div className="flex w-full flex-col gap-4">
