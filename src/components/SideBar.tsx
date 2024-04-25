@@ -8,9 +8,9 @@ type SideBarProps = {
 
 export function SideBar({ locationOptions, categoryOptions }: SideBarProps) {
   return (
-    <aside className="flex h-fit shrink-0 flex-col gap-4 pt-1 md:sticky md:top-0">
-      <SearchSideBar {...{ locationOptions, categoryOptions }} />
+    <aside className="flex h-fit shrink-0 flex-col gap-4 pt-1 md:sticky md:top-0 md:flex-col-reverse">
       <FeaturedSideSection />
+      <SearchSideBar {...{ locationOptions, categoryOptions }} />
     </aside>
   );
 }
