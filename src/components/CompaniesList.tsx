@@ -53,13 +53,15 @@ export default function CompaniesList({
         </div>
       ) : (
         <div className="flex-1">
-          <div className="mb-1 flex flex-wrap items-center justify-between text-sm text-muted-foreground ">
+          <div className="mb-2 flex w-full flex-col flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground md:flex-row md:gap-0">
             <Badge variant="secondary" className="flex items-center gap-1 px-1">
               <Clock size={16} />
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago.
             </Badge>
-            Page {currentPage} of {totalPages} • {filteredCompanies.length}{" "}
-            companies found
+            <div>
+              Page {currentPage} of {totalPages} • {filteredCompanies.length}{" "}
+              companies found
+            </div>
           </div>
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company) => (
