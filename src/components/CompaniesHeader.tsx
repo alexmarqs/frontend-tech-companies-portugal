@@ -1,15 +1,17 @@
 import Image from "next/image";
+import bgHeader from "../../public/bg-header.webp";
 
 export default function CompaniesHeader() {
   return (
     <section className="relative overflow-hidden rounded-md py-11 text-center">
       <div className="absolute inset-0 z-0 opacity-35">
         <Image
-          src="/bg-header.webp"
-          fill={true}
+          src={bgHeader}
+          fill
           quality={50}
           className="object-cover object-center"
           priority
+          placeholder="blur"
           alt="Background Tech Companies in Portugal"
         />
       </div>
