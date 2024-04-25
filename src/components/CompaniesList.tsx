@@ -58,7 +58,8 @@ export default function CompaniesList({
               <Clock size={16} />
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago.
             </Badge>
-            {filteredCompanies.length} companies found.
+            Page {currentPage} of {totalPages} • {filteredCompanies.length}{" "}
+            companies found
           </div>
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company) => (
