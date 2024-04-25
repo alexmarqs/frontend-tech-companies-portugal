@@ -1,11 +1,6 @@
 export default function CompaniesHeader() {
   return (
-    <section
-      className="relative overflow-hidden rounded-md bg-cover bg-center bg-no-repeat py-11 text-center"
-      style={{
-        backgroundImage: "url(/bg-header.webp)",
-      }}
-    >
+    <section className="relative overflow-hidden rounded-md bg-[url(/bg-header.webp)] bg-cover bg-center bg-no-repeat py-11 text-center">
       <div className="absolute inset-0 bg-white bg-opacity-65"></div>
 
       <div className="relative z-10 space-y-3 px-6">
