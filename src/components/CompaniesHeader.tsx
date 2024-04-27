@@ -1,9 +1,9 @@
 import Image from "next/image";
-import bgHeader from "../../public/bg-header.webp";
+import bgHeader from "../../public/assets/images//bg-header.webp";
 
 export default function CompaniesHeader() {
   return (
-    <section className="relative overflow-hidden rounded-md py-11 text-center">
+    <section className="relative w-full overflow-hidden rounded-md py-11 text-center">
       <div className="absolute inset-0 z-0 opacity-35">
         <Image
           src={bgHeader}
@@ -20,7 +20,7 @@ export default function CompaniesHeader() {
         <h1 className="font-calsans text-3xl tracking-tight">
           Explore Tech Companies in Portugal 🇵🇹
         </h1>
-        <p className="text-accent-foreground">
+        <p className="hidden text-accent-foreground md:block">
           The most comprehensive list of tech companies in Portugal, all in one
           place. Non official frontend that aggregates data from{" "}
           <a
