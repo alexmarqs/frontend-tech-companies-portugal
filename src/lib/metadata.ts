@@ -11,6 +11,9 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: TITLE,
   description: DESCRIPTION,
+  alternates: {
+    canonical: APP_URL,
+  },
 };
 
 export const defaultTwitterMetadata: Metadata["twitter"] = {

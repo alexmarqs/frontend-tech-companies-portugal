@@ -40,6 +40,9 @@ export async function generateMetadata({
     ...defaultMetadata,
     title,
     description,
+    alternates: {
+      canonical: `${APP_URL}/company/${slug}`,
+    },
     openGraph: {
       ...defaultOpenGraphMetadata,
       title,
