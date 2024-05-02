@@ -20,7 +20,7 @@ export default function CompaniesHeader() {
         <h1 className="font-calsans text-3xl tracking-tight">
           Explore Tech Companies in Portugal 🇵🇹
         </h1>
-        <p className="hidden text-accent-foreground md:block">
+        <p className="sr-only text-accent-foreground">
           The most comprehensive list of tech companies in Portugal, all in one
           place. Non official frontend that aggregates data from{" "}
           <a
