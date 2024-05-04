@@ -9,7 +9,6 @@ import {
 } from "@/lib/metadata";
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/react";
 import { Metadata, Viewport } from "next/types";
 import "./globals.css";
 
@@ -46,7 +45,6 @@ export default function RootLayout({ children }: LayoutProps) {
         <Navbar />
         {children}
         <Footer />
-        <Analytics />
       </body>
     </html>
   );
