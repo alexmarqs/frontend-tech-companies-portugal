@@ -1,9 +1,8 @@
 import { Redis } from "@upstash/redis";
-import { config } from "./config";
 
 const redis = new Redis({
-  url: config.redis.url,
-  token: config.redis.token,
+  url: process.env.REDIS_URL || "",
+  token: process.env.REDIS_TOKEN || "",
 });
 
 export const VIEWS_REDIS_KEY = "pageviews";
