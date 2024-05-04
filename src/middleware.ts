@@ -1,35 +1,20 @@
-import { NextFetchEvent, NextResponse } from "next/server";
-import { createDailyBucket, registerPageView } from "./lib/analytics";
+import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { createDailyBucket, registerView } from "./lib/analytics";
 
 export const config = {
-  matcher: [
-    {
-      source: "/",
-      missing: [
-        { type: "header", key: "next-router-prefetch" },
-        { type: "header", key: "purpose", value: "prefetch" },
-      ],
-    },
-    {
-      source: "/company/:slug*",
-      missing: [
-        { type: "header", key: "next-router-prefetch" },
-        { type: "header", key: "purpose", value: "prefetch" },
-      ],
-    },
-  ],
+  matcher: ["/", "/company/:slug*"],
 };
 
 export default function middleware(
-  req: Request,
+  req: NextRequest,
   event: NextFetchEvent,
 ): NextResponse {
-  const url = new URL(req.url);
-
-  // just a double check to make sure we are tracking the right pages
   // use waitUntil too avoid blocking the response
-  if (url.pathname.startsWith("/company/") || url.pathname === "/") {
-    event.waitUntil(registerPageView(url.pathname, createDailyBucket()));
+  if (
+    req.nextUrl.pathname.startsWith("/company/") ||
+    req.nextUrl.pathname === "/"
+  ) {
+    event.waitUntil(registerView(req.nextUrl.pathname, createDailyBucket()));
   }
 
   return NextResponse.next();

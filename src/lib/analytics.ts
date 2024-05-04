@@ -7,7 +7,7 @@ const redis = new Redis({
 
 export const VIEWS_REDIS_KEY = "pageviews";
 
-export const registerPageView = (companySlug: string, bucket: string) => {
+export const registerView = (companySlug: string, bucket: string) => {
   return redis.zincrby([VIEWS_REDIS_KEY, bucket].join(":"), 1, companySlug);
 };
 

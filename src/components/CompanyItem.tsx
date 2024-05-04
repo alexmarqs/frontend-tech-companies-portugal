@@ -18,7 +18,6 @@ export default function CompanyItem({
         "group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40",
         isFeatured && "bg-gradient-to-r from-green-400/35 to-red-500/35",
       )}
-      prefetch={false} // Disable prefetching to avoid conflict of analytics middleware vs router cache
       href={`/company/${slug}`}
     >
       <div className="flex w-full flex-col gap-4">
