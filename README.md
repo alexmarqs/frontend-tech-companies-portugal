@@ -13,11 +13,12 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 
 ## Tech stack 🧑‍💻
 
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [TypeScript](https://www.typescriptlang.org/)
-- [Shadcn UI](https://ui.shadcn.com)
-- [Vercel](https://vercel.com/)
+- [Shadcn UI](https://ui.shadcn.com) - UI components
+- [Vercel](https://vercel.com/) - Hosting and CI/CD
+- [Upstash](https://upstash.com/) - Redis as a service for analytics
 
 ## How to contribute 🤝
 
