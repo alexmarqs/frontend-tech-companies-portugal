@@ -1,5 +1,8 @@
+import { Redis } from "@upstash/redis";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
-import { createDailyBucket, registerView } from "./lib/analytics";
+import { VIEWS_REDIS_KEY, getDailyBucket } from "./lib/utils";
+
+const redis = Redis.fromEnv();
 
 export const config = {
   matcher: ["/", "/company/:slug*"],
@@ -14,7 +17,13 @@ export default function middleware(
     req.nextUrl.pathname.startsWith("/company/") ||
     req.nextUrl.pathname === "/"
   ) {
-    event.waitUntil(registerView(req.nextUrl.pathname, createDailyBucket()));
+    event.waitUntil(
+      redis.zincrby(
+        [VIEWS_REDIS_KEY, getDailyBucket()].join(":"),
+        1,
+        req.nextUrl.pathname,
+      ),
+    );
   }
 
   return NextResponse.next();

@@ -1,8 +1,8 @@
 "use client";
 
 import { LineChart } from "lucide-react";
+import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 export default function AnalyticsButton() {
@@ -14,10 +14,11 @@ export default function AnalyticsButton() {
   }
 
   return (
-    <Button className="px-3" variant="outline" disabled>
-      <LineChart className="mr-2 shrink-0" size={16} />
-      Analytics
-      <Badge className="ml-2 rounded-md text-xs">Coming soon</Badge>
+    <Button asChild className="px-3" variant="outline">
+      <Link href="/analytics">
+        <LineChart className="mr-2 shrink-0" size={16} />
+        Analytics
+      </Link>
     </Button>
   );
 }

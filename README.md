@@ -19,8 +19,13 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - [Shadcn UI](https://ui.shadcn.com) - UI components
 - [Vercel](https://vercel.com/) - Hosting and CI/CD
 - [Upstash](https://upstash.com/) - Redis as a service for analytics
+- [Tremor](https://www.tremor.so/) - React components to build charts and dashboards
 
 ## How to contribute 🤝
 
 No requirements, just open a pull request with your changes.
 If you want to add a new feature, please open an issue first to discuss it.
+
+## Technical notes 📝
+
+Currently, our Next.js middleware incorrectly counts prefetched pages as views due to caching issues. We could exclude the prefetch pages (checking some headers) from the middleware match configuration, but then navigation via the Link component won’t trigger analytics. Disabling prefetching is an option, though it might slow down navigation. Alternatively, we could shift to client-side analytics tracking for more accuracy. This will need consideration for future updates.

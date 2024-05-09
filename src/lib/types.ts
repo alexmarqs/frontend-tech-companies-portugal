@@ -20,3 +20,7 @@ export type SearchParams = {
   location?: string;
   page?: string;
 };
+export type PageViewsData = {
+  time: number;
+  views: Record<string, number>;
+}[];
