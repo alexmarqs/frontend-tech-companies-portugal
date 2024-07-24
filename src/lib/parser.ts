@@ -26,6 +26,7 @@ const fetchGithubReadmeHtmlFrom = async (owner: string, repo: string) => {
 
   const response = await fetch(url, {
     headers: {
+      UserAgent: "Tech Companies in Portugal",
       Accept: "application/vnd.github.html+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
@@ -50,14 +51,17 @@ const extractCompaniesDataFromHtml = (html: string) => {
   const availableCategories = new Set<string>();
   const availableLocations = new Set<string>();
 
-  $("h2").each((_, element) => {
+  $("h2.heading-element").each((_, element) => {
     const category = $(element).text().trim();
     const nextSibling = $(element).parent().next();
 
-    if (nextSibling.is("table")) {
+    if (
+      nextSibling.is("markdown-accessiblity-table") &&
+      nextSibling.find("table").length
+    ) {
       availableCategories.add(category);
 
-      nextSibling.find("tr").each((index, row) => {
+      nextSibling.find("table tr").each((index, row) => {
         if (index === 0) return;
 
         const columns = $(row).find("td");
