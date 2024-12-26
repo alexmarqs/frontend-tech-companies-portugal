@@ -24,3 +24,5 @@ export type PageViewsData = {
   time: number;
   views: Record<string, number>;
 }[];
+
+export type NextParams = Promise<{ slug: string }>;
