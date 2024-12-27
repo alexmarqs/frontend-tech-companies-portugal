@@ -58,7 +58,7 @@ export const DashboardAnalytics = ({
           <CardDescription>{`Total views: ${totalViews}`}</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={chartConfig}>
+          <ChartContainer className="h-[200px] w-full" config={chartConfig}>
             <AreaChart
               accessibilityLayer
               data={timeSeriesData.map((data) => ({
@@ -103,7 +103,7 @@ export const DashboardAnalytics = ({
           <CardTitle>Top 5 pages views (15 days)</CardTitle>
         </CardHeader>
         <CardContent>
-          <ChartContainer className="h-[20rem] w-full" config={chartConfig}>
+          <ChartContainer className="h-[200px] w-full" config={chartConfig}>
             <BarChart
               accessibilityLayer
               data={topPages}
