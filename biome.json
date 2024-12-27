@@ -15,6 +15,7 @@
       "out",
       ".next",
       "package-lock.json",
+      "package.json",
       ".vscode",
       "next-env.d.ts",
       "biome.json"
