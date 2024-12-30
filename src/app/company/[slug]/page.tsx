@@ -8,6 +8,7 @@ import {
   defaultOpenGraphMetadata,
   defaultTwitterMetadata,
 } from "@/lib/metadata";
+import { NextParams } from "@/lib/types";
 import { Briefcase, Globe } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Metadata } from "next/types";
@@ -23,9 +24,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: NextParams;
 }): Promise<Metadata | void> {
-  const slug = params.slug;
+  const { slug } = await params;
 
   const product = await getParsedCompanyBySlug(slug);
 
@@ -61,12 +62,10 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function CompanyPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const company = await getParsedCompanyBySlug(params.slug);
+export default async function CompanyPage({ params }: { params: NextParams }) {
+  const { slug } = await params;
+
+  const company = await getParsedCompanyBySlug(slug);
 
   if (!company) {
     notFound();

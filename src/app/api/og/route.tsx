@@ -22,90 +22,88 @@ export async function GET(request: Request) {
     ]);
 
     return new ImageResponse(
-      (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          textAlign: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          backgroundColor: "white",
+          backgroundImage:
+            "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
+          backgroundSize: "100px 100px",
+        }}
+      >
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            left: 20,
+            top: 25,
+            position: "absolute",
             display: "flex",
-            textAlign: "center",
             alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            backgroundColor: "white",
-            backgroundImage:
-              "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
-            backgroundSize: "100px 100px",
+            gap: 2,
           }}
         >
-          <div
-            style={{
-              left: 20,
-              top: 25,
-              position: "absolute",
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-            }}
-          >
-            <img
-              height="65"
-              width="65"
-              src={`${APP_URL}/assets/images/logo.png`}
-              alt="Tech companies in Portugal Logo"
-            />
-            <div
-              style={{
-                display: "flex",
-                fontSize: 22,
-                fontFamily: "Cal",
-              }}
-            >
-              <span
-                style={{
-                  color: "rgb(21 128 61)",
-                }}
-              >
-                {"<"}
-              </span>
-              <span>TechCompaniesPortugal</span>
-              <span
-                style={{
-                  color: "rgb(250 204 21)",
-                }}
-              >
-                {"/"}
-              </span>
-              <span
-                style={{
-                  color: "rgb(239 68 68)",
-                }}
-              >
-                {">"}
-              </span>
-            </div>
-          </div>
+          <img
+            height="65"
+            width="65"
+            src={`${APP_URL}/assets/images/logo.png`}
+            alt="Tech companies in Portugal Logo"
+          />
           <div
             style={{
               display: "flex",
-              fontSize: 50,
+              fontSize: 22,
               fontFamily: "Cal",
             }}
           >
-            {title}
+            <span
+              style={{
+                color: "rgb(21 128 61)",
+              }}
+            >
+              {"<"}
+            </span>
+            <span>TechCompaniesPortugal</span>
+            <span
+              style={{
+                color: "rgb(250 204 21)",
+              }}
+            >
+              {"/"}
+            </span>
+            <span
+              style={{
+                color: "rgb(239 68 68)",
+              }}
+            >
+              {">"}
+            </span>
           </div>
-          <p
-            style={{
-              marginTop: 20,
-              display: "flex",
-              fontSize: 25,
-              maxWidth: 1100,
-            }}
-          >
-            {description}
-          </p>
         </div>
-      ),
+        <div
+          style={{
+            display: "flex",
+            fontSize: 50,
+            fontFamily: "Cal",
+          }}
+        >
+          {title}
+        </div>
+        <p
+          style={{
+            marginTop: 20,
+            display: "flex",
+            fontSize: 25,
+            maxWidth: 1100,
+          }}
+        >
+          {description}
+        </p>
+      </div>,
       {
         ...SIZE,
         fonts: [

@@ -5,7 +5,7 @@ import { VIEWS_REDIS_KEY, getDailyBucket } from "./lib/utils";
 const redis = Redis.fromEnv();
 
 export const config = {
-  matcher: ["/", "/company/:slug*"],
+  matcher: ["/", "/company/:slug*((?!sitemap.xml).*)"],
 };
 
 export default function middleware(

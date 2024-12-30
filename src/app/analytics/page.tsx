@@ -3,7 +3,7 @@ import { DashboardAnalytics } from "@/components/DashboardAnalytics";
 import { MS_IN_DAY, VIEWS_REDIS_KEY, getDailyBucket } from "@/lib/utils";
 import { Redis } from "@upstash/redis";
 
-export const revalidate = 21600;
+export const revalidate = 21600; // 6 hours
 
 const redis = Redis.fromEnv();
 
