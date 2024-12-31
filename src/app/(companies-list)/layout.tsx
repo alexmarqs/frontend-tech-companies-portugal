@@ -3,9 +3,9 @@ import { LayoutProps } from "@/lib/types";
 
 export default function AppLayout({ children }: LayoutProps) {
   return (
-    <main className="mx-auto flex w-full min-w-[300px] max-w-5xl flex-1 flex-col p-3">
+    <main className="flex-1 flex-col w-full">
       <CompaniesHeader />
-      {children}
+      <div className="mx-auto flex w-full max-w-5xl p-3">{children}</div>
     </main>
   );
 }

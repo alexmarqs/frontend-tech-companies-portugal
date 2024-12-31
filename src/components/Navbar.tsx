@@ -6,8 +6,8 @@ import { Button } from "./ui/button";
 
 export default function Navbar() {
   return (
-    <header className="bg-background py-2 shadow-sm">
-      <div className="container mx-auto flex h-full items-center justify-between px-3">
+    <header className="bg-background shadow-sm sticky top-0 z-10 px-3 py-2 font-mono font-semibold">
+      <div className="container mx-auto flex h-full items-center justify-between">
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/assets/images/logo.png"
@@ -16,9 +16,9 @@ export default function Navbar() {
             width="40"
             height="40"
           />
-          <div className="hidden font-calsans md:block">
+          <div className="hidden md:block">
             <span className="font-bold text-green-700">{"<"}</span>
-            <span className="font-calsans">TechCompaniesPortugal</span>
+            <span>TechCompaniesPortugal</span>
             <span className="font-bold text-yellow-400">{"/"}</span>
             <span className="font-bold text-red-500">{">"}</span>
           </div>
@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <AnalyticsButton />
           <ExploreButton />
-          <Button asChild variant="outline">
+          <Button asChild>
             <a
               href="https://github.com/alexmarqs/frontend-tech-companies-portugal"
               target="_blank"

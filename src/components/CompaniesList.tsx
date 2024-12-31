@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
+import FeaturedSideSection from "./FeaturedSideSection";
 import { Badge } from "./ui/badge";
 
 const PAGE_SIZE = 15;
@@ -75,6 +76,9 @@ export default function CompaniesList({
           </div>
         </div>
       )}
+      <div className="block md:hidden">
+        <FeaturedSideSection />
+      </div>
     </>
   );
 }

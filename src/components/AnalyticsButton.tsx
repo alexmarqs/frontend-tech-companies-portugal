@@ -14,7 +14,7 @@ export default function AnalyticsButton() {
   }
 
   return (
-    <Button asChild className="px-3" variant="outline">
+    <Button asChild className="px-3">
       <Link href="/analytics">
         <LineChart className="mr-2 shrink-0" size={16} />
         Analytics
