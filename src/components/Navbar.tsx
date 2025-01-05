@@ -1,6 +1,7 @@
 import { getParsedCompaniesCategoriesAndLocations } from "@/lib/actions/companies";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import AnalyticsButton from "./AnalyticsButton";
 import ExploreButton from "./ExploreButton";
 import FiltersPanelButton from "./FiltersPanelButton";
@@ -26,9 +27,11 @@ export default function Navbar() {
           </div>
         </Link>
         <div className="flex items-center gap-2">
-          <FiltersPanelButton
-            companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
-          />
+          <Suspense>
+            <FiltersPanelButton
+              companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
+            />
+          </Suspense>
           <AnalyticsButton />
           <ExploreButton />
           <Button asChild>
