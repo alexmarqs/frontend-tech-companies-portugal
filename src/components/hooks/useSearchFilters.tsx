@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useCallback } from "react";
 
@@ -22,6 +22,12 @@ export function useSearchFilters({
     category: initialFilters?.category || null,
     location: initialFilters?.location || null,
   });
+
+  useEffect(() => {
+    if (initialFilters) {
+      setFilters(initialFilters);
+    }
+  }, [initialFilters]);
 
   const handleSearchTerm = useCallback(
     (term: string) => {

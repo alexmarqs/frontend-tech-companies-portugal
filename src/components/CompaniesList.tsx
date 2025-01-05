@@ -45,7 +45,7 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <div className="flex-1">
+        <div className="flex-1 font-mono">
           <EmptyState
             className=""
             title="No companies found"
@@ -53,18 +53,17 @@ export default function CompaniesList({
           />
         </div>
       ) : (
-        <div className="flex-1">
-          <div className="mb-2 w-full flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+        <div className="flex-1 font-mono">
+          <div className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
             <Badge
               variant="secondary"
               className="flex items-center gap-1 px-1 rounded-none"
             >
-              <Clock size={16} />
+              <Clock size={14} />
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
             </Badge>
             <div>
-              Page {currentPage} of {totalPages} • {filteredCompanies.length}{" "}
-              companies found
+              Page {currentPage} of {totalPages} • {filteredCompanies.length}
             </div>
           </div>
           <div className="flex-1 space-y-4">

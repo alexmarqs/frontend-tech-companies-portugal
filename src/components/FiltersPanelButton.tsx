@@ -38,11 +38,11 @@ export default function FiltersPanelButton({
         onClick={() => setIsFilterOpen(true)}
         className="px-3 inline-flex md:hidden hover:cursor-pointer"
       >
-        <div className="flex items-center">
-          <SlidersHorizontal className="md:mr-2 shrink-0" size={16} />
-          <span className="hidden md:block">Filters</span>
+        <div className="flex items-cente gap-1">
+          <SlidersHorizontal className="shrink-0" size={16} />
+          <span>Filters</span>
           {appliedFilters.length > 0 && (
-            <span className="text-sm ml-1 ">({appliedFilters.length})</span>
+            <span className="text-sm">({appliedFilters.length})</span>
           )}
         </div>
       </Button>
@@ -60,14 +60,14 @@ export default function FiltersPanelButton({
                 <X className="h-4 w-4" />
               </Button>
             </div>
-            <div className="w-full flex-1">
+            <div className="w-full h-full flex flex-col">
               <SearchSideBar
                 locationOptions={availableLocations}
                 categoryOptions={availableCategories}
                 extendedFilterUI={(
                   filters,
                   updateURL,
-                  _setFilters,
+                  setFilters,
                   filtersNumber,
                 ) => (
                   <div className="flex flex-col gap-2">
@@ -76,8 +76,7 @@ export default function FiltersPanelButton({
                       variant="outline"
                       className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => {
-                        setIsFilterOpen(false);
-                        updateURL({
+                        setFilters({
                           query: null,
                           category: null,
                           location: null,

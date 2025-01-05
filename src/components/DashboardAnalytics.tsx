@@ -14,6 +14,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { PageViewsData } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import {
   Area,
   AreaChart,
@@ -24,6 +25,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { retroContainerVariants } from "./ui/retro-container";
 
 type DashboardAnalyticsProps = {
   timeSeriesData: PageViewsData;
@@ -52,7 +54,12 @@ export const DashboardAnalytics = ({
 }: DashboardAnalyticsProps) => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-      <Card className="col-span-3">
+      <Card
+        className={cn(
+          "col-span-3",
+          retroContainerVariants({ variant: "static" }),
+        )}
+      >
         <CardHeader>
           <CardTitle>Views (15 days)</CardTitle>
           <CardDescription>{`Total views: ${totalViews}`}</CardDescription>
@@ -98,7 +105,12 @@ export const DashboardAnalytics = ({
           </ChartContainer>
         </CardContent>
       </Card>
-      <Card className="col-span-3">
+      <Card
+        className={cn(
+          "col-span-3",
+          retroContainerVariants({ variant: "static" }),
+        )}
+      >
         <CardHeader>
           <CardTitle>Top 5 pages views (15 days)</CardTitle>
         </CardHeader>
