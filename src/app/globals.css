@@ -67,3 +67,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/60 rounded-full border border-background transition-colors;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent/80 cursor-pointer;
+}
+
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
