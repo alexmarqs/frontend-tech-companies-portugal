@@ -123,7 +123,7 @@ export function SearchSideBar({
             <Button
               disabled={filtersNumber === 0}
               variant="outline"
-              className="h-9 w-full px-2"
+              className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
               onClick={handleResetFilters}
             >
               <X className="mr-[2px] h-4 w-4" />

@@ -134,9 +134,12 @@ export const DashboardAnalytics = ({
                 <LabelList
                   dataKey="name"
                   position="insideLeft"
-                  offset={8}
+                  offset={3}
                   className="fill-[--color-name]"
                   fontSize={12}
+                  formatter={(value: string) =>
+                    value === "/" ? value : value.split("/").pop()
+                  }
                 />
                 <LabelList
                   dataKey="value"

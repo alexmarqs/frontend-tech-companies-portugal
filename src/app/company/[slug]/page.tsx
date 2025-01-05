@@ -1,6 +1,7 @@
 import { Categories, Locations } from "@/components/CompanyItem";
 import { CopyUrlButton } from "@/components/CopyUrlButton";
 import { Button } from "@/components/ui/button";
+import { RetroContainer } from "@/components/ui/retro-container";
 import { getParsedCompanyBySlug } from "@/lib/actions/companies";
 import {
   APP_URL,
@@ -73,10 +74,10 @@ export default async function CompanyPage({ params }: { params: NextParams }) {
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-1 items-center justify-center p-3">
-      <div className="flex-1 space-y-8 rounded-md border px-6 py-6 shadow-md">
+      <RetroContainer variant="static" className="flex-1 space-y-8 px-6 py-6">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h1 className="font-calsans text-2xl">{company.name}</h1>
+            <h1 className="text-2xl">{company.name}</h1>
             <CopyUrlButton />
           </div>
           <div className="flex flex-wrap items-center justify-start gap-4">
@@ -93,6 +94,7 @@ export default async function CompanyPage({ params }: { params: NextParams }) {
             icon={<Globe size={14} />}
             label="Website"
           />
+
           <LinkUrlButton
             url={company.careersUrl}
             icon={<Briefcase size={14} />}
@@ -108,7 +110,7 @@ export default async function CompanyPage({ params }: { params: NextParams }) {
             label="GitHub"
           />
         </div>
-      </div>
+      </RetroContainer>
     </div>
   );
 }
@@ -129,7 +131,7 @@ const LinkUrlButton = ({
   return (
     <Button
       variant="secondary"
-      className="h-8 rounded-full px-2 text-xs text-foreground"
+      className="h-8 px-2 text-xs text-foreground"
       asChild
     >
       <a href={url} target="_blank" rel="noreferrer">

@@ -29,7 +29,7 @@ export const EmptyState = ({
         className="h-auto w-auto"
         alt="Empty"
       />
-      <p className="text-center font-calsans">{title}</p>
+      <p className="text-center">{title}</p>
       {description && (
         <p className="text-md text-center text-muted-foreground">
           {description}

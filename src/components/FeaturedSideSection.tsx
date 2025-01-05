@@ -10,16 +10,11 @@ export default function FeaturedSideSection() {
           Reach me out to get your company featured.
         </p>
       </div>
-      <Button
-        variant="secondary"
-        asChild
-        className="mt-4 w-full bg-gradient-to-r from-green-400 to-red-500 hover:from-green-500 hover:to-red-600"
-      >
+      <Button variant="secondary" asChild className="mt-4 w-full">
         <a
           href="https://github.com/alexmarqs/frontend-tech-companies-portugal/issues/new"
           target="_blank"
           rel="noreferrer"
-          className="text-white"
         >
           Request now
         </a>

@@ -4,6 +4,7 @@ import { ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Badge } from "./ui/badge";
+import { RetroContainer } from "./ui/retro-container";
 
 type CompanyItemProps = {
   company: Company;
@@ -13,30 +14,31 @@ export default function CompanyItem({
   company: { name, description, locations, categories, slug, isFeatured },
 }: CompanyItemProps) {
   return (
-    <Link
-      className={cn(
-        "group flex w-full gap-2 rounded-md border p-5 hover:cursor-pointer hover:bg-muted/40",
-        isFeatured && "bg-gradient-to-r from-green-400/35 to-red-500/35",
-      )}
-      href={`/company/${slug}`}
-    >
-      <div className="flex w-full flex-col gap-4">
-        <div className="flex w-full flex-wrap items-center justify-between gap-2">
-          <h3 className="line-clamp-1 flex items-center justify-center gap-2 text-lg font-medium">
-            {name} {isFeatured && <FeatureCompanyBadge />}
-          </h3>
-          <Categories categories={categories || []} />
+    <RetroContainer>
+      <Link
+        className={cn(
+          "group flex w-full gap-2 p-5 hover:cursor-pointer hover:bg-muted/40",
+        )}
+        href={`/company/${slug}`}
+      >
+        <div className="flex w-full flex-col gap-4">
+          <div className="flex w-full flex-wrap items-center justify-between gap-2">
+            <h3 className="line-clamp-1 flex items-center justify-center gap-2 text-lg font-medium">
+              {name} {isFeatured && <span>🔥</span>}
+            </h3>
+            <Categories categories={categories || []} />
+          </div>
+          <p className="line-clamp-2 text-sm italic text-muted-foreground">
+            {description}
+          </p>
+          <Locations locations={locations || []} />
         </div>
-        <p className="line-clamp-2 text-sm italic text-muted-foreground">
-          {description}
-        </p>
-        <Locations locations={locations || []} />
-      </div>
-      <ChevronRight
-        className="shrink-0 self-center text-muted-foreground"
-        size={24}
-      />
-    </Link>
+        <ChevronRight
+          className="shrink-0 self-center text-muted-foreground"
+          size={24}
+        />
+      </Link>
+    </RetroContainer>
   );
 }
 
@@ -77,19 +79,5 @@ export const Categories = ({
         </Badge>
       ))}
     </div>
-  );
-};
-
-const FeatureCompanyBadge = () => {
-  return (
-    <Badge
-      variant="secondary"
-      className="flex items-center justify-between gap-1 text-nowrap rounded-md text-xs font-semibold tracking-wider"
-    >
-      <span className="bg-gradient-to-r from-green-400 to-red-500 bg-clip-text text-transparent">
-        Featured
-      </span>
-      <span>🔥</span>
-    </Badge>
   );
 };
