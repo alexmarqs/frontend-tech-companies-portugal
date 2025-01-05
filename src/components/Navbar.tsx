@@ -1,14 +1,16 @@
+import { getParsedCompaniesCategoriesAndLocations } from "@/lib/actions/companies";
 import Image from "next/image";
 import Link from "next/link";
 import AnalyticsButton from "./AnalyticsButton";
 import ExploreButton from "./ExploreButton";
+import FiltersPanelButton from "./FiltersPanelButton";
 import { Button } from "./ui/button";
 
 export default function Navbar() {
   return (
     <header className="bg-background shadow-sm sticky top-0 z-10 px-3 py-2 font-mono font-semibold">
-      <div className="container mx-auto flex h-full items-center justify-between">
-        <Link href="/" className="flex items-center gap-1">
+      <div className="container mx-auto flex h-full items-center justify-between flex-wrap">
+        <Link href="/" className="flex items-center gap-1 flex-shrink-0">
           <Image
             src="/assets/images/logo.png"
             priority
@@ -24,6 +26,9 @@ export default function Navbar() {
           </div>
         </Link>
         <div className="flex items-center gap-2">
+          <FiltersPanelButton
+            companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
+          />
           <AnalyticsButton />
           <ExploreButton />
           <Button asChild>

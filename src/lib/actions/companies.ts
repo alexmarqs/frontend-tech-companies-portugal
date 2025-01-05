@@ -19,6 +19,14 @@ export const getParsedCompaniesData = async () => {
   };
 };
 
+export const getParsedCompaniesCategoriesAndLocations = async () => {
+  const data = await parseCompaniesData();
+  return {
+    availableCategories: data.availableCategories,
+    availableLocations: data.availableLocations,
+  };
+};
+
 export const getParsedCompanyBySlug = async (slug: string) => {
   const { companies } = await getParsedCompaniesData();
 

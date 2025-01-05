@@ -54,7 +54,7 @@ export default function CompaniesList({
         </div>
       ) : (
         <div className="flex-1">
-          <div className="mb-2 flex w-full flex-col flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground md:flex-row md:gap-0">
+          <div className="mb-2 w-full flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
             <Badge
               variant="secondary"
               className="flex items-center gap-1 px-1 rounded-none"

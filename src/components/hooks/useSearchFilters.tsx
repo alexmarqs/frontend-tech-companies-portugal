@@ -78,5 +78,6 @@ export function useSearchFilters({
     handleCategoryChange,
     handleLocationChange,
     handleResetFilters,
+    setFilters,
   };
 }
