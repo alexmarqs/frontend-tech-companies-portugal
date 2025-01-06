@@ -1,18 +1,11 @@
 "use client";
 
-import { ChevronDown, ChevronUp, ListFilter, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
-import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
+import { RetroContainer } from "./ui/retro-container";
 import {
   Select,
   SelectContent,
@@ -21,104 +14,67 @@ import {
   SelectValue,
 } from "./ui/select";
 
+import { useCallback } from "react";
+import { SearchFilters, useSearchFilters } from "./hooks/useSearchFilters";
+import { useSearchFiltersParams } from "./hooks/useSearchFiltersParams";
+
 type SearchSideBarProps = {
   locationOptions: string[];
   categoryOptions: string[];
+  extendedFilterUI?: (
+    filters: SearchFilters,
+    updateURL: (filters: SearchFilters) => void,
+    setFilters: (filters: SearchFilters) => void,
+    filtersNumber?: number,
+  ) => React.ReactNode;
 };
 
 export function SearchSideBar({
   locationOptions,
   categoryOptions,
+  extendedFilterUI,
 }: SearchSideBarProps) {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
-  const category = searchParams.get("category");
-  const location = searchParams.get("location");
+  const { searchParams, filters: initialFilters } = useSearchFiltersParams();
 
-  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(true);
+  const updateURL = useCallback(
+    (filters: SearchFilters) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("page");
 
-  const filtersNumber = [query, category, location].filter(Boolean).length;
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) {
+          params.set(key, value);
+        } else {
+          params.delete(key);
+        }
+      });
 
-  const handleSearchTerm = (term: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("page");
+      window.history.pushState(null, "", `?${params.toString()}`);
+    },
+    [searchParams],
+  );
 
-    if (term) {
-      params.set("query", term);
-    } else {
-      params.delete("query");
-    }
-
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
-
-  const handleCategoryChange = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("page");
-
-    if (value !== "all") {
-      params.set("category", value);
-    } else {
-      params.delete("category");
-    }
-
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
-
-  const handleLocationChange = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("page");
-
-    if (value !== "all") {
-      params.set("location", value);
-    } else {
-      params.delete("location");
-    }
-
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
-
-  const handleResetFilters = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("page");
-    params.delete("query");
-    params.delete("category");
-    params.delete("location");
-
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
+  const {
+    filters,
+    filtersNumber,
+    handleSearchTerm,
+    handleCategoryChange,
+    handleLocationChange,
+    handleResetFilters,
+    setFilters,
+  } = useSearchFilters({
+    initialFilters,
+    onFiltersChange: !extendedFilterUI ? updateURL : undefined,
+  });
 
   return (
-    <div className="h-fit shrink-0 pt-1">
-      <div className="mx-auto rounded-md border px-4 py-3 md:w-72">
-        <Collapsible
-          open={isCollapsibleOpen}
-          onOpenChange={setIsCollapsibleOpen}
-          className="w-full"
-        >
-          <CollapsibleTrigger className="group w-full">
-            <div className="text-md flex items-center justify-between font-medium">
-              <div className="flex items-center gap-1">
-                <ListFilter className="h-4 w-4" />
-                Filters
-                {filtersNumber > 0 && (
-                  <Badge className="rounded-full px-2" variant="secondary">
-                    {filtersNumber}
-                  </Badge>
-                )}
-              </div>
-              {isCollapsibleOpen ? (
-                <div className="rounded-full bg-transparent p-2 group-hover:bg-muted ">
-                  <ChevronUp className="h-4 w-4" />
-                </div>
-              ) : (
-                <div className="rounded-full bg-transparent p-2 group-hover:bg-muted ">
-                  <ChevronDown className="h-4 w-4" />
-                </div>
-              )}
-            </div>
-          </CollapsibleTrigger>
-          <CollapsibleContent className="mt-2">
+    <div className="w-full flex flex-col h-full justify-between">
+      <RetroContainer
+        variant="static"
+        className="shrink-0 md:w-[330px] md:mx-auto"
+      >
+        <div className="px-4 py-3 w-full">
+          <div className="mt-2">
             <div className="space-y-4">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="query">Search term</Label>
@@ -128,14 +84,14 @@ export function SearchSideBar({
                   onChange={(e) => {
                     handleSearchTerm(e.target.value);
                   }}
-                  value={query || ""}
+                  value={filters.query || ""}
                   placeholder="Name or description term"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
-                  value={category || "all"}
+                  value={filters.category || "all"}
                   onValueChange={handleCategoryChange}
                 >
                   <SelectTrigger id="category" className="w-full">
@@ -154,7 +110,7 @@ export function SearchSideBar({
               <div className="flex flex-col gap-2">
                 <Label htmlFor="location">Location</Label>
                 <Select
-                  value={location || "all"}
+                  value={filters.location || "all"}
                   onValueChange={handleLocationChange}
                 >
                   <SelectTrigger id="location" className="w-full">
@@ -170,18 +126,24 @@ export function SearchSideBar({
                   </SelectContent>
                 </Select>
               </div>
-              <Button
-                disabled={filtersNumber === 0}
-                variant="outline"
-                className="h-9 w-full px-2"
-                onClick={handleResetFilters}
-              >
-                <X className="mr-[2px] h-4 w-4" />
-                Reset filters
-              </Button>
+              {!extendedFilterUI && (
+                <Button
+                  disabled={filtersNumber === 0}
+                  variant="outline"
+                  className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
+                  onClick={handleResetFilters}
+                >
+                  <X className="mr-[2px] h-4 w-4" />
+                  Reset filters
+                </Button>
+              )}
             </div>
-          </CollapsibleContent>
-        </Collapsible>
+          </div>
+        </div>
+      </RetroContainer>
+      <div className="w-full">
+        {extendedFilterUI &&
+          extendedFilterUI(filters, updateURL, setFilters, filtersNumber)}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { APP_URL } from "@/lib/metadata";
 import { ImageResponse } from "next/og";
-import { DESCRIPTION, SIZE, TITLE, calSemiBold, interRegular } from "./_utils";
+import { DESCRIPTION, SIZE, TITLE, loadGoogleFont } from "./_utils";
 
 export const runtime = "edge";
 
@@ -16,11 +16,6 @@ export async function GET(request: Request) {
       (searchParams.has("description") && searchParams.get("description")) ||
       DESCRIPTION;
 
-    const [calSemiBoldData, interRegularData] = await Promise.all([
-      calSemiBold,
-      interRegular,
-    ]);
-
     return new ImageResponse(
       <div
         style={{
@@ -31,6 +26,7 @@ export async function GET(request: Request) {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
+          fontFamily: "Geist Mono",
           backgroundColor: "white",
           backgroundImage:
             "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
@@ -56,8 +52,10 @@ export async function GET(request: Request) {
           <div
             style={{
               display: "flex",
-              fontSize: 22,
-              fontFamily: "Cal",
+              fontSize: 25,
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "Geist Mono SemiBold",
             }}
           >
             <span
@@ -67,7 +65,7 @@ export async function GET(request: Request) {
             >
               {"<"}
             </span>
-            <span>TechCompaniesPortugal</span>
+            <span className="font-bold">TechCompaniesPortugal</span>
             <span
               style={{
                 color: "rgb(250 204 21)",
@@ -88,7 +86,7 @@ export async function GET(request: Request) {
           style={{
             display: "flex",
             fontSize: 50,
-            fontFamily: "Cal",
+            fontFamily: "Geist Mono SemiBold",
           }}
         >
           {title}
@@ -108,12 +106,15 @@ export async function GET(request: Request) {
         ...SIZE,
         fonts: [
           {
-            name: "Inter",
-            data: interRegularData,
+            name: "Geist Mono",
+            data: await loadGoogleFont("Geist Mono", "TechCompaniesPortugal"),
           },
           {
-            name: "Cal",
-            data: calSemiBoldData,
+            name: "Geist Mono SemiBold",
+            data: await loadGoogleFont(
+              "Geist Mono:wght@600",
+              "TechCompaniesPortugal",
+            ),
           },
         ],
       },

@@ -11,7 +11,7 @@ export const NoCompaniesResults = () => {
         className="h-auto w-auto"
         alt="Empty"
       />
-      <p className="text-center font-calsans">No companies found.</p>
+      <p className="text-center">No companies found.</p>
       <p className="text-md text-center text-muted-foreground">
         Try again or check back later.
       </p>

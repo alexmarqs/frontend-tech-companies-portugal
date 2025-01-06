@@ -23,14 +23,10 @@ export const CopyUrlButton = () => {
   };
 
   return (
-    <Button
-      className="h-8 rounded-md px-2 text-xs"
-      variant="outline"
-      onClick={handleClick}
-    >
+    <Button className="h-8 rounded-md px-2 text-xs" onClick={handleClick}>
       {isCopied ? <Check size={16} /> : <Copy size={16} />}
       <span className="hidden sm:ml-1 sm:block">
-        {isCopied ? "Copied, share it!" : "Copy URL"}
+        {isCopied ? "Copied!" : "Copy URL"}
       </span>
     </Button>
   );

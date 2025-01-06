@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
+import FeaturedSideSection from "./FeaturedSideSection";
 import { Badge } from "./ui/badge";
 
 const PAGE_SIZE = 15;
@@ -44,7 +45,7 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <div className="flex-1">
+        <div className="flex-1 font-mono">
           <EmptyState
             className=""
             title="No companies found"
@@ -52,15 +53,17 @@ export default function CompaniesList({
           />
         </div>
       ) : (
-        <div className="flex-1">
-          <div className="mb-2 flex w-full flex-col flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground md:flex-row md:gap-0">
-            <Badge variant="secondary" className="flex items-center gap-1 px-1">
-              <Clock size={16} />
-              Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago.
+        <div className="flex-1 font-mono">
+          <div className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
+            <Badge
+              variant="secondary"
+              className="flex items-center gap-1 px-1 rounded-none"
+            >
+              <Clock size={14} />
+              Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
             </Badge>
             <div>
-              Page {currentPage} of {totalPages} • {filteredCompanies.length}{" "}
-              companies found
+              Page {currentPage} of {totalPages} • {filteredCompanies.length}
             </div>
           </div>
           <div className="flex-1 space-y-4">
@@ -75,6 +78,9 @@ export default function CompaniesList({
           </div>
         </div>
       )}
+      <div className="block md:hidden">
+        <FeaturedSideSection />
+      </div>
     </>
   );
 }

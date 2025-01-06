@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { fontCalsans, fontInter } from "@/lib/fonts";
+import { GeistMono, GeistSans } from "@/lib/fonts";
 import {
   defaultMetadata,
   defaultOpenGraphMetadata,
@@ -38,8 +38,8 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={cn(
           "flex min-h-screen flex-col bg-background font-sans antialiased",
-          fontInter.variable,
-          fontCalsans.variable,
+          GeistSans.variable,
+          GeistMono.variable,
         )}
       >
         <Navbar />

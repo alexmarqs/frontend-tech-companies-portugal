@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 export default async function AnalyticsLayout({ children }: LayoutProps) {
   return (
-    <main className="mx-auto flex w-full min-w-[300px] max-w-5xl flex-1 flex-col p-3">
+    <main className="mx-auto flex w-full min-w-[300px] max-w-5xl flex-1 flex-col p-3 font-mono">
       <AnalyticsHeader />
       {children}
     </main>

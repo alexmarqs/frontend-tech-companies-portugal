@@ -3,17 +3,23 @@ export const SIZE = {
   height: 630,
 };
 
-export const TITLE = "Explore Tech Companies in Portugal 🇵🇹";
+export const TITLE = "Tech Companies in Portugal 🇵🇹";
 export const DESCRIPTION =
   "The most comprehensive list of tech companies in Portugal, all in one place.";
 
-export const calSemiBold = fetch(
-  new URL(
-    "../../../../public/assets/fonts/CalSans-SemiBold.ttf",
-    import.meta.url,
-  ),
-).then((res) => res.arrayBuffer());
+export async function loadGoogleFont(font: string, text: string) {
+  const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`;
+  const css = await (await fetch(url)).text();
+  const resource = css.match(
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
+  );
 
-export const interRegular = fetch(
-  new URL("../../../../public/assets/fonts/Inter-Regular.ttf", import.meta.url),
-).then((res) => res.arrayBuffer());
+  if (resource) {
+    const response = await fetch(resource[1]);
+    if (response.status == 200) {
+      return await response.arrayBuffer();
+    }
+  }
+
+  throw new Error("failed to load font data");
+}

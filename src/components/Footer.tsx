@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="bg-background py-5 text-center">
+    <footer className="bg-background py-5 text-center text-xs">
       <div className="container">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground">
           Crafted with ❤️ by{" "}
           <a
             href="https://alexandremarques.io"
