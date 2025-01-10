@@ -14,7 +14,7 @@ export default function CompanyItem({
   company: { name, description, locations, categories, slug, isFeatured },
 }: CompanyItemProps) {
   return (
-    <RetroContainer>
+    <RetroContainer className="w-full">
       <Link
         className={cn(
           "group flex w-full gap-2 p-5 hover:cursor-pointer hover:bg-muted/40",
@@ -73,7 +73,7 @@ export const Categories = ({
         <Badge
           key={index}
           variant="secondary"
-          className="text-nowrap rounded-md text-xs font-semibold tracking-wider"
+          className="rounded-none text-xs font-semibold tracking-wider"
         >
           {category}
         </Badge>

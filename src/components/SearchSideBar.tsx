@@ -71,7 +71,7 @@ export function SearchSideBar({
     <div className="w-full flex flex-col h-full justify-between">
       <RetroContainer
         variant="static"
-        className="shrink-0 md:w-[330px] md:mx-auto"
+        className="shrink-0 md:w-[300px] md:mx-auto"
       >
         <div className="px-4 py-3 w-full">
           <div className="mt-2">

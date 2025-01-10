@@ -16,7 +16,6 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Shadcn UI](https://ui.shadcn.com) - UI components
 - [Vercel](https://vercel.com/) - Hosting and CI/CD
-- [Upstash](https://upstash.com/) - Redis as a service for analytics
 
 ## How to contribute 🤝
 

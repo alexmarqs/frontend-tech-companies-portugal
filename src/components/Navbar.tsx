@@ -2,7 +2,6 @@ import { getParsedCompaniesCategoriesAndLocations } from "@/lib/actions/companie
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import AnalyticsButton from "./AnalyticsButton";
 import ExploreButton from "./ExploreButton";
 import FiltersPanelButton from "./FiltersPanelButton";
 import { Button } from "./ui/button";
@@ -32,13 +31,12 @@ export default function Navbar() {
               companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
             />
           </Suspense>
-          <AnalyticsButton />
           <ExploreButton />
           <Button asChild>
             <a
               href="https://github.com/alexmarqs/frontend-tech-companies-portugal"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener"
               className="!px-2"
             >
               <svg aria-hidden="true" className="h-6 w-6">
