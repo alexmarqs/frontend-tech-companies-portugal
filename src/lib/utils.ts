@@ -21,12 +21,3 @@ export const matchCompanies = (
     (!location || company?.locations?.includes(location))
   );
 };
-
-export const VIEWS_REDIS_KEY = "pageviews";
-
-export const getDailyBucket = (time?: number) => {
-  const now = time ?? Date.now();
-  return (Math.floor(now / MS_IN_DAY) * MS_IN_DAY).toString();
-};
-
-export const MS_IN_DAY = 86400000;

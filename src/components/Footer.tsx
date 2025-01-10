@@ -7,7 +7,7 @@ export default function Footer() {
           <a
             href="https://alexandremarques.io"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener"
             className="underline underline-offset-[2px]"
           >
             Alexandre Marques

@@ -67,7 +67,7 @@ export default function FiltersPanelButton({
                 extendedFilterUI={(
                   filters,
                   updateURL,
-                  setFilters,
+                  _setFilters,
                   filtersNumber,
                 ) => (
                   <div className="flex flex-col gap-2">
@@ -76,7 +76,8 @@ export default function FiltersPanelButton({
                       variant="outline"
                       className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => {
-                        setFilters({
+                        setIsFilterOpen(false);
+                        updateURL({
                           query: null,
                           category: null,
                           location: null,

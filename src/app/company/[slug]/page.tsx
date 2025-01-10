@@ -29,14 +29,14 @@ export async function generateMetadata({
 }): Promise<Metadata | void> {
   const { slug } = await params;
 
-  const product = await getParsedCompanyBySlug(slug);
+  const company = await getParsedCompanyBySlug(slug);
 
-  if (!product) {
+  if (!company) {
     return;
   }
 
-  const title = `${product.name} | Tech companies in Portugal`;
-  const description = product.description;
+  const title = `${company.name} - Leading Tech Company in Portugal | Explore Careers & More`;
+  const description = company.description;
 
   const metadata: Metadata = {
     ...defaultMetadata,
@@ -50,13 +50,13 @@ export async function generateMetadata({
       title,
       description,
       url: `${APP_URL}/company/${slug}`,
-      images: [`api/og?title=${product.name}&description=${description}`],
+      images: [`api/og?title=${company.name}&description=${description}`],
     },
     twitter: {
       ...defaultTwitterMetadata,
       title,
       description,
-      images: [`api/og?title=${product.name}&description=${description}`],
+      images: [`api/og?title=${company.name}&description=${description}`],
     },
   };
 
@@ -134,7 +134,7 @@ const LinkUrlButton = ({
       className="h-8 px-2 text-xs text-foreground"
       asChild
     >
-      <a href={url} target="_blank" rel="noreferrer">
+      <a href={url} target="_blank" rel="noopener">
         <div className="flex items-center gap-1">
           {icon}
           {label}
