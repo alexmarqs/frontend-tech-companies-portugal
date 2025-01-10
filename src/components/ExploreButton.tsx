@@ -17,7 +17,7 @@ export default function ExploreButton() {
     <Button asChild className="px-3">
       <Link href="/">
         <FolderSearch className="mr-2 shrink-0" size={16} />
-        Explore companies
+        Discover More
       </Link>
     </Button>
   );
