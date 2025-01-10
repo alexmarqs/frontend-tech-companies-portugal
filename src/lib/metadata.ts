@@ -3,7 +3,7 @@ import { Metadata } from "next/types";
 export const TITLE =
   "Tech Companies in Portugal | Leading Startups & Innovators";
 export const DESCRIPTION =
-  "Explore a comprehensive directory of tech companies in Portugal, featuring innovative startups and established industry leaders. Access detailed descriptions, visit their websites, explore career opportunities, and connect through their digital presence.";
+  "Explore a comprehensive directory of tech companies in Portugal, featuring innovative startups and established industry leaders. Access descriptions, visit their websites, explore career opportunities, and connect through their digital presence.";
 
 export const APP_URL = process.env.VERCEL_URL
   ? "https://tech-companies-pt.alexandremarques.io"
