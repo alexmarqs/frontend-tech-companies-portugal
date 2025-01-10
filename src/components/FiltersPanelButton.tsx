@@ -2,7 +2,7 @@
 
 import { SlidersHorizontal, X } from "lucide-react";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { SearchSideBar } from "./SearchSideBar";
 import { useSearchFiltersParams } from "./hooks/useSearchFiltersParams";
 import { Button } from "./ui/button";
@@ -26,6 +26,18 @@ export default function FiltersPanelButton({
   const { availableCategories = [], availableLocations = [] } = use(
     companiesCategoriesAndLocationsPromise,
   );
+
+  useEffect(() => {
+    if (isFilterOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isFilterOpen]);
 
   if (!isCompanyListPage) {
     return null;
