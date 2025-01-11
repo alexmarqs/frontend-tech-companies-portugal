@@ -2,7 +2,10 @@ import { Categories, Locations } from "@/components/CompanyItem";
 import { CopyUrlButton } from "@/components/CopyUrlButton";
 import { Button } from "@/components/ui/button";
 import { RetroContainer } from "@/components/ui/retro-container";
-import { getParsedCompanyBySlug } from "@/lib/actions/companies";
+import {
+  getParsedCompaniesData,
+  getParsedCompanyBySlug,
+} from "@/lib/actions/companies";
 import {
   APP_URL,
   defaultMetadata,
@@ -18,8 +21,9 @@ import { Metadata } from "next/types";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  // in this case let's not generate any static paths, we will generate them on demand
-  return [];
+  const companies = await getParsedCompaniesData();
+
+  return companies.companies.map((company) => ({ slug: company.slug }));
 }
 
 export async function generateMetadata({

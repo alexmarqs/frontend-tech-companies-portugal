@@ -63,7 +63,10 @@ export default function CompaniesList({
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
             </Badge>
             <div>
-              Page {currentPage} of {totalPages} • {filteredCompanies.length}
+              Page {currentPage} of {totalPages}
+              <span className="hidden md:inline-block">
+                &nbsp;• {filteredCompanies.length}
+              </span>
             </div>
           </div>
           <div className="flex-1 space-y-4">

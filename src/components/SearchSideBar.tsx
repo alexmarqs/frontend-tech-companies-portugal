@@ -68,7 +68,7 @@ export function SearchSideBar({
   });
 
   return (
-    <div className="w-full flex flex-col h-full justify-between">
+    <div className="w-full flex flex-col h-full gap-4 justify-between">
       <RetroContainer
         variant="static"
         className="shrink-0 md:w-[300px] md:mx-auto"

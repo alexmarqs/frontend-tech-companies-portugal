@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import emptyImage from "../../public/assets/images/empty.png";
 
 type EmptyStateProps = {
   title: string;
@@ -23,7 +24,7 @@ export const EmptyState = ({
     >
       <Image
         priority
-        src={imagePath || "/assets/images/empty.png"}
+        src={imagePath || emptyImage}
         height="100"
         width="100"
         className="h-auto w-auto"
