@@ -14,17 +14,21 @@ export default function CompanyItem({
   company: { name, description, locations, categories, slug, isFeatured },
 }: CompanyItemProps) {
   return (
-    <RetroContainer className="w-full">
+    <RetroContainer
+      variant={isFeatured ? "featured" : "default"}
+      className="w-full"
+    >
       <Link
         className={cn(
           "group flex w-full gap-2 p-5 hover:cursor-pointer hover:bg-muted/40",
         )}
         href={`/company/${slug}`}
       >
-        <div className="flex w-full flex-col gap-4">
+        <div className="flex w-full flex-col gap-4 ">
           <div className="flex w-full flex-wrap items-center justify-between gap-2">
             <h3 className="line-clamp-1 flex items-center justify-center gap-2 text-lg font-medium">
-              {name} {isFeatured && <span>🔥</span>}
+              {name}
+              {isFeatured && <span className="animate-pulse">🔥</span>}
             </h3>
             <Categories categories={categories || []} />
           </div>

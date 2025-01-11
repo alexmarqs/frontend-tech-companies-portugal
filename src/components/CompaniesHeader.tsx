@@ -16,7 +16,7 @@ export default function CompaniesHeader() {
         />
       </div>
 
-      <h1 className="relative z-[5] font-mono font-bold text-4xl max-w-5xl mx-auto">
+      <h1 className="relative z-[5] px-1 font-mono font-bold text-4xl max-w-5xl mx-auto">
         Discover Leading Tech Companies in Portugal 🇵🇹
       </h1>
     </section>

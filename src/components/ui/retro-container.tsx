@@ -7,6 +7,10 @@ const retroContainerVariants = cva("font-mono border-2 transition-all", {
     variant: {
       default:
         "border-accent shadow-[3px_3px_0_0_hsl(var(--accent))] hover:shadow-none hover:translate-x-1 hover:translate-y-0.5",
+      featured:
+        "border-orange-200 bg-orange-100 hover:shadow-none hover:translate-x-1 hover:translate-y-0.5 shadow-[3px_3px_0_0_rgba(255,165,0,0.5)]",
+      "static-featured":
+        "border-orange-200 bg-orange-100 shadow-[3px_3px_0_0_rgba(255,165,0,0.5)]",
       secondary:
         "border-accent-foreground shadow-[3px_3px_0_0_hsl(var(--accent-foreground))] hover:shadow-none hover:translate-x-1 hover:translate-y-0.5",
       static:
