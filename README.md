@@ -17,6 +17,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - [Shadcn UI](https://ui.shadcn.com) - UI components
 - [Vercel](https://vercel.com/) - Hosting and CI/CD
 - [Biome](https://biomejs.dev/) - Formatting and linting
+- [Motion](https://motion.dev/) - Animation library
 
 ## How to contribute 🤝
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { APP_URL } from "@/lib/metadata";
 import { ImageResponse } from "next/og";
-import { DESCRIPTION, SIZE, TITLE, loadGoogleFont } from "./_utils";
+import { SIZE, loadGoogleFont } from "./_utils";
 
 export const runtime = "edge";
 
@@ -10,12 +10,12 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
 
     const title =
-      (searchParams.has("title") && searchParams.get("title")) || TITLE;
+      (searchParams.has("title") && searchParams.get("title")) ||
+      "Tech Companies in Portugal | Leading Startups & Innovators";
 
     const description =
       (searchParams.has("description") && searchParams.get("description")) ||
-      DESCRIPTION;
-
+      "Discover tech companies in Portugal - from innovative startups to industry leaders. Browse companies, and connect with the tech ecosystem.";
     return new ImageResponse(
       <div
         style={{

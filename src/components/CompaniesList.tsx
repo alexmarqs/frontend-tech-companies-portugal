@@ -4,6 +4,7 @@ import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
+import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import CompaniesListPagination from "./CompaniesListPagination";
@@ -44,13 +45,18 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <div className="flex-1 font-mono">
+        <motion.div
+          className="flex-1 font-mono"
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          role="alert"
+        >
           <EmptyState
-            className=""
             title="No companies found"
             description="We couldn't find any companies matching your search."
           />
-        </div>
+        </motion.div>
       ) : (
         <div className="flex-1 font-mono">
           <div className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
@@ -66,8 +72,19 @@ export default function CompaniesList({
             </div>
           </div>
           <div className="flex-1 space-y-4">
-            {paginatedCompanies.map((company) => (
-              <CompanyItem company={company} key={company.slug} />
+            {paginatedCompanies.map((company, index) => (
+              <motion.div
+                key={company.slug}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                  ease: "easeOut",
+                }}
+              >
+                <CompanyItem company={company} />
+              </motion.div>
             ))}
             <CompaniesListPagination
               currentPage={currentPage}

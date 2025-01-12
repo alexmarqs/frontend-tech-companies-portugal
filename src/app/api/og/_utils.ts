@@ -3,10 +3,6 @@ export const SIZE = {
   height: 630,
 };
 
-export const TITLE = "Tech Companies in Portugal 🇵🇹";
-export const DESCRIPTION =
-  "The most comprehensive list of tech companies in Portugal, all in one place.";
-
 export async function loadGoogleFont(font: string, text: string) {
   const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`;
   const css = await (await fetch(url)).text();
