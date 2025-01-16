@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useCallback } from "react";
-
+import { useDebouncedCallback } from "use-debounce";
 export type SearchFilters = {
   query: string | null;
   category: string | null;
@@ -29,6 +29,13 @@ export function useSearchFilters({
     }
   }, [initialFilters]);
 
+  const debouncedOnFiltersChange = useDebouncedCallback(
+    (newFilters: SearchFilters) => {
+      onFiltersChange?.(newFilters);
+    },
+    200,
+  );
+
   const handleSearchTerm = useCallback(
     (term: string) => {
       const newFilters = {
@@ -36,9 +43,9 @@ export function useSearchFilters({
         query: term || null,
       };
       setFilters(newFilters);
-      onFiltersChange?.(newFilters);
+      debouncedOnFiltersChange(newFilters);
     },
-    [filters, onFiltersChange],
+    [filters, debouncedOnFiltersChange],
   );
 
   const handleCategoryChange = useCallback(

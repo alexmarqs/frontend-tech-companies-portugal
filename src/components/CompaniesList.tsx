@@ -4,6 +4,7 @@ import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Clock } from "lucide-react";
+import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import CompaniesListPagination from "./CompaniesListPagination";
@@ -74,9 +75,18 @@ export default function CompaniesList({
           </div>
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company, index) => (
-              <div key={company.slug}>
+              <motion.div
+                key={company.slug}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+              >
                 <CompanyItem company={company} />
-              </div>
+              </motion.div>
             ))}
             <CompaniesListPagination
               currentPage={currentPage}

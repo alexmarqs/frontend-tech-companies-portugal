@@ -30,7 +30,8 @@
     "sharp": "0.33.2",
     "slugify": "1.6.6",
     "tailwind-merge": "2.2.1",
-    "tailwindcss-animate": "1.0.7"
+    "tailwindcss-animate": "1.0.7",
+    "use-debounce": "10.0.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
