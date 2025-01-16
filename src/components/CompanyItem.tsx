@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { HotFeaturedBadge } from "./HotFeaturedBadge";
 import { Badge } from "./ui/badge";
 import { RetroContainer } from "./ui/retro-container";
 
@@ -28,11 +29,11 @@ export default function CompanyItem({
           <div className="flex w-full flex-wrap items-center justify-between gap-2">
             <h3 className="line-clamp-1 flex items-center justify-center gap-2 text-lg font-medium">
               {name}
-              {isFeatured && <span className="animate-pulse">🔥</span>}
+              {isFeatured && <HotFeaturedBadge />}
             </h3>
             <Categories categories={categories || []} />
           </div>
-          <p className="line-clamp-2 text-sm italic text-muted-foreground">
+          <p className="line-clamp-2 text-sm text-muted-foreground">
             {description}
           </p>
           <Locations locations={locations || []} />

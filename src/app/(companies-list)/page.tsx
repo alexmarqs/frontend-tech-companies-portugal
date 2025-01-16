@@ -1,5 +1,6 @@
+import CompaniesList from "@/components/CompaniesList";
+import { SideBar } from "@/components/SideBar";
 import { getParsedCompaniesData } from "@/lib/actions/companies";
-import CompaniesClientPage from "./CompaniesClientPage";
 
 export default async function CompaniesPage() {
   const {
@@ -10,11 +11,16 @@ export default async function CompaniesPage() {
   } = await getParsedCompaniesData();
 
   return (
-    <CompaniesClientPage
-      companies={companies}
-      availableCategories={availableCategories}
-      availableLocations={availableLocations}
-      updatedAtISODate={updatedAtISODate}
-    />
+    <section className="relative flex flex-1 flex-col gap-6 md:flex-row">
+      <SideBar
+        categoryOptions={availableCategories}
+        locationOptions={availableLocations}
+      />
+
+      <CompaniesList
+        allCompanies={companies}
+        updatedAtISODate={updatedAtISODate}
+      />
+    </section>
   );
 }

@@ -1,3 +1,4 @@
+import { HotFeaturedBadge } from "./HotFeaturedBadge";
 import { Button } from "./ui/button";
 import { RetroContainer } from "./ui/retro-container";
 
@@ -16,8 +17,8 @@ export default function FeaturedSideSection() {
       className="px-4 py-3 md:w-[300px]"
     >
       <div className="space-y-3 text-center">
-        <h2 className="text-lg font-semibold">
-          Get Featured <span className="animate-pulse">🔥</span>
+        <h2 className="text-lg font-semibold flex items-center justify-center gap-2">
+          Get Featured <HotFeaturedBadge />
         </h2>
         <p className="text-sm tracking-wide text-gray-500">
           Reach me out to get your company featured.

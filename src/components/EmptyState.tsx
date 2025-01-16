@@ -23,7 +23,6 @@ export const EmptyState = ({
       )}
     >
       <Image
-        priority
         src={imagePath || emptyImage}
         height="100"
         width="100"
