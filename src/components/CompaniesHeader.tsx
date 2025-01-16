@@ -10,7 +10,7 @@ export default function CompaniesHeader() {
           src={bgHeader}
           fill
           quality={50}
-          className="object-cover object-center opacity-45"
+          className="object-cover object-center opacity-50"
           priority
           placeholder="blur"
           alt="Background Tech Companies in Portugal"
