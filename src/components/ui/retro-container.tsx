@@ -12,7 +12,7 @@ const retroContainerVariants = cva(
         featured:
           "border-orange-200 bg-orange-100 hover:shadow-none hover:translate-x-1 hover:translate-y-0.5 shadow-[3px_3px_0_0_hsl(var(--orange))]",
         "static-featured":
-          "border-orange-200 bg-orange-100 shadow-[3px_3px_0_0_hsl(var(--orange))]]",
+          "border-orange-200 bg-orange-100 shadow-[3px_3px_0_0_hsl(var(--orange))] hover:translate-x-0 hover:translate-y-0 hover:shadow-[3px_3px_0_0_hsl(var(--orange))]",
         secondary:
           "border-accent-foreground shadow-[3px_3px_0_0_hsl(var(--accent-foreground))] hover:shadow-none hover:translate-x-1 hover:translate-y-0.5",
         static:

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import bgHeader from "../../public/assets/images/bg-header.webp";
+import { AnimatedCompaniesFeatures } from "./ui/AnimatedCompaniesFeatures";
 
 export default function CompaniesHeader() {
   return (
@@ -16,9 +17,12 @@ export default function CompaniesHeader() {
         />
       </div>
 
-      <h1 className="relative z-[5] px-1 font-mono font-bold text-4xl max-w-5xl mx-auto">
-        Discover Leading Tech Companies in Portugal 🇵🇹
-      </h1>
+      <div className="relative z-[5] px-1 max-w-5xl mx-auto flex flex-col items-center gap-6">
+        <h1 className="font-mono font-bold text-3xl md:text-4xl">
+          Discover Leading Tech Companies in Portugal 🇵🇹
+        </h1>
+        <AnimatedCompaniesFeatures />
+      </div>
     </section>
   );
 }
