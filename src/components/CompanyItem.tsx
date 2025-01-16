@@ -17,7 +17,7 @@ export default function CompanyItem({
   return (
     <RetroContainer
       variant={isFeatured ? "featured" : "default"}
-      className="w-full"
+      className="w-full relative"
     >
       <Link
         className={cn(

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-background py-5 text-center text-xs">
+    <footer className="bg-background py-4 text-center text-xs">
       <div className="container">
         <p className="text-muted-foreground">
           Crafted with ❤️ by{" "}

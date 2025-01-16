@@ -10,6 +10,7 @@ import CompaniesListPagination from "./CompaniesListPagination";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
 import FeaturedSideSection from "./FeaturedSideSection";
+import { Badge } from "./ui/badge";
 
 const PAGE_SIZE = 15;
 
@@ -53,16 +54,23 @@ export default function CompaniesList({
       ) : (
         <div className="flex-1 font-mono">
           <div className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
-            <div className="flex items-center gap-1">
+            <Badge
+              variant="outline"
+              className="rounded-none bg-white px-1 gap-1"
+            >
               <Clock size={14} />
               Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
-            </div>
-            <div>
+            </Badge>
+
+            <Badge
+              variant="outline"
+              className="rounded-none bg-white px-1 gap-1"
+            >
               Page {currentPage} of {totalPages}
               <span className="hidden md:inline-block">
                 &nbsp;• {filteredCompanies.length}
               </span>
-            </div>
+            </Badge>
           </div>
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company, index) => (

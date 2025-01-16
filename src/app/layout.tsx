@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import DotPattern from "@/components/ui/dot-pattern";
 import { GeistMono, GeistSans } from "@/lib/fonts";
 import {
   defaultMetadata,
@@ -45,6 +46,11 @@ export default function RootLayout({ children }: LayoutProps) {
         <Navbar />
         {children}
         <Footer />
+        <DotPattern
+          className={cn(
+            "[mask-image:radial-gradient(620px_circle_at_center,white,transparent)] fixed inset-0 -z-10",
+          )}
+        />
       </body>
     </html>
   );

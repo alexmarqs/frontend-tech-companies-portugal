@@ -4,12 +4,12 @@ import bgHeader from "../../public/assets/images/bg-header.webp";
 export default function CompaniesHeader() {
   return (
     <section className="relative w-full overflow-hidden py-12 text-center">
-      <div className="absolute inset-0 z-0 opacity-45">
+      <div className="absolute inset-0 z-0 bg-background">
         <Image
           src={bgHeader}
           fill
           quality={50}
-          className="object-cover object-center"
+          className="object-cover object-center opacity-45"
           priority
           placeholder="blur"
           alt="Background Tech Companies in Portugal"
