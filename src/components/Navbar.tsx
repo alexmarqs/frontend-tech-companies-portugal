@@ -18,7 +18,7 @@ export default function Navbar() {
             width="40"
             height="40"
           />
-          <div className="hidden md:block">
+          <div className="hidden sm:block text-sm">
             <span className="font-bold text-green-700">{"<"}</span>
             <span>TechCompaniesPortugal</span>
             <span className="font-bold text-yellow-400">{"/"}</span>
