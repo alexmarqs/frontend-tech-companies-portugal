@@ -6,7 +6,7 @@ export const DESCRIPTION =
   "Explore a comprehensive directory of tech companies in Portugal, featuring innovative startups and established industry leaders. Access descriptions, visit their websites, explore career opportunities, and connect through their digital presence.";
 
 export const APP_URL = process.env.VERCEL_URL
-  ? "https://tech-companies-pt.alexandremarques.io"
+  ? "https://techcompaniesportugal.fyi"
   : "http://localhost:3000";
 
 export const defaultMetadata: Metadata = {
