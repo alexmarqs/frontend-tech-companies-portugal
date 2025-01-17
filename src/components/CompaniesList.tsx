@@ -2,16 +2,14 @@
 
 import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
-import { formatDistanceToNow } from "date-fns";
-import { Clock } from "lucide-react";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-import CompaniesListPagination from "./CompaniesListPagination";
+import CompaniesListFooter from "./CompaniesListFooter";
+import { CompaniesListHeader } from "./CompaniesListHeader";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
 import FeaturedSideSection from "./FeaturedSideSection";
-import { Badge } from "./ui/badge";
 
 const PAGE_SIZE = 15;
 
@@ -46,33 +44,33 @@ export default function CompaniesList({
   return (
     <>
       {!paginatedCompanies.length ? (
-        <div className="flex-1 font-mono">
+        <motion.div
+          className="flex-1 font-mono"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           <EmptyState
             title="No companies found"
             description="We couldn't find any companies matching your search."
           />
-        </div>
+        </motion.div>
       ) : (
         <div className="flex-1 font-mono">
-          <div className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground">
-            <Badge
-              variant="outline"
-              className="rounded-none bg-white px-1 gap-1"
-            >
-              <Clock size={14} />
-              Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
-            </Badge>
-
-            <Badge
-              variant="outline"
-              className="rounded-none bg-white px-1 gap-1"
-            >
-              Page {currentPage} of {totalPages}
-              <span className="hidden md:inline-block">
-                &nbsp;• {filteredCompanies.length}
-              </span>
-            </Badge>
-          </div>
+          <motion.div
+            className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <CompaniesListHeader
+              updatedAtISODate={updatedAtISODate}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              filteredCompanies={filteredCompanies}
+              searchParams={searchParams}
+            />
+          </motion.div>
           <div className="flex-1 space-y-4">
             {paginatedCompanies.map((company, index) => (
               <motion.div
@@ -88,7 +86,7 @@ export default function CompaniesList({
                 <CompanyItem company={company} />
               </motion.div>
             ))}
-            <CompaniesListPagination
+            <CompaniesListFooter
               currentPage={currentPage}
               totalPages={totalPages}
               searchParams={searchParams}

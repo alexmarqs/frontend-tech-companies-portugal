@@ -7,35 +7,23 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { ReadonlyURLSearchParams } from "next/navigation";
+import { usePaginationUtils } from "./hooks/usePaginationUtils";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
-type CompaniesListPaginationProps = {
+type CompaniesListFooterProps = {
   currentPage: number;
   totalPages: number;
   searchParams?: ReadonlyURLSearchParams;
 };
 
-export default function CompaniesListPagination({
+export default function CompaniesListFooter({
   totalPages,
   currentPage,
   searchParams,
-}: CompaniesListPaginationProps) {
-  const isPreviousDisabled = currentPage === 1;
-  const isNextDisabled = currentPage === totalPages;
-
-  const createPageUrl = (page: number) => {
-    const currentUrlSearchParams = new URLSearchParams(searchParams);
-
-    if (page === 1) {
-      // Remove the page query param if it's the first page
-      currentUrlSearchParams.delete("page");
-    } else {
-      currentUrlSearchParams.set("page", String(page));
-    }
-
-    return `/?${currentUrlSearchParams.toString()}`;
-  };
+}: CompaniesListFooterProps) {
+  const { isPreviousDisabled, isNextDisabled, createPageUrl } =
+    usePaginationUtils({ currentPage, totalPages, searchParams });
 
   return (
     <div className="flex items-center justify-between gap-2">

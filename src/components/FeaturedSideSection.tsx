@@ -14,7 +14,7 @@ export default function FeaturedSideSection() {
   return (
     <RetroContainer
       variant="static-featured"
-      className="px-4 py-3 md:w-[300px]"
+      className="px-4 py-3 md:w-[290px]"
     >
       <div className="space-y-3 text-center">
         <h2 className="text-lg font-semibold flex items-center justify-center gap-2">
