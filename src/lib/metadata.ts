@@ -34,6 +34,6 @@ export const defaultOpenGraphMetadata: Metadata["openGraph"] = {
   images: [`api/og`],
 };
 
-// export const verificationMetadata: Metadata["verification"] = {
-//   google: "_YWvg85foYnXGeQrGSAdi1xkOUoJ1O50TO6YbWzadx8",
-// };
+export const verificationMetadata: Metadata["verification"] = {
+  google: "cVg27MdqDoYw1j_CT6307XBo8t-9bldNpFIkc8heWio",
+};
