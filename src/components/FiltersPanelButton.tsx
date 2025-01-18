@@ -5,6 +5,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { use, useEffect, useState } from "react";
 import { SearchSideBar } from "./SearchSideBar";
 import { useSearchFiltersParams } from "./hooks/useSearchFiltersParams";
+import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { RetroContainer } from "./ui/retro-container";
 
@@ -54,7 +55,7 @@ export default function FiltersPanelButton({
           <SlidersHorizontal className="shrink-0" size={16} />
           <span>Filters</span>
           {appliedFilters.length > 0 && (
-            <span className="text-sm">({appliedFilters.length})</span>
+            <Badge className="text-xs px-2 m-0">{appliedFilters.length}</Badge>
           )}
         </div>
       </Button>
