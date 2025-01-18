@@ -3,13 +3,13 @@
 import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { motion } from "motion/react";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import CompaniesListFooter from "./CompaniesListFooter";
 import { CompaniesListHeader } from "./CompaniesListHeader";
 import CompanyItem from "./CompanyItem";
 import { EmptyState } from "./EmptyState";
 import FeaturedSideSection from "./FeaturedSideSection";
+import { useSearchQueryParams } from "./hooks/useSearchQueryParams";
 
 const PAGE_SIZE = 15;
 
@@ -20,14 +20,11 @@ export default function CompaniesList({
   allCompanies: Company[];
   updatedAtISODate: string;
 }) {
-  const searchParams = useSearchParams();
+  const {
+    searchParams: { query, category, location, page },
+  } = useSearchQueryParams();
 
-  const query = searchParams.get("query") || "";
-  const category = searchParams.get("category") || "";
-  const location = searchParams.get("location") || "";
-  const currentPage = Number(searchParams.get("page")) || 1;
-
-  const start = (currentPage - 1) * PAGE_SIZE;
+  const start = (page - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
 
   const filteredCompanies = useMemo(
@@ -40,10 +37,6 @@ export default function CompaniesList({
 
   const paginatedCompanies = filteredCompanies.slice(start, end);
   const totalPages = Math.ceil(filteredCompanies.length / PAGE_SIZE);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [searchParams]);
 
   return (
     <>
@@ -69,10 +62,8 @@ export default function CompaniesList({
           >
             <CompaniesListHeader
               updatedAtISODate={updatedAtISODate}
-              currentPage={currentPage}
               totalPages={totalPages}
               filteredCompanies={filteredCompanies}
-              searchParams={searchParams}
             />
           </motion.div>
           <div className="flex-1 space-y-4">
@@ -90,11 +81,7 @@ export default function CompaniesList({
                 <CompanyItem company={company} />
               </motion.div>
             ))}
-            <CompaniesListFooter
-              currentPage={currentPage}
-              totalPages={totalPages}
-              searchParams={searchParams}
-            />
+            <CompaniesListFooter totalPages={totalPages} />
           </div>
         </div>
       )}

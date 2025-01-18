@@ -11,6 +11,7 @@ import {
 import { LayoutProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Metadata, Viewport } from "next/types";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,14 +44,16 @@ export default function RootLayout({ children }: LayoutProps) {
           GeistMono.variable,
         )}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <DotPattern
-          className={cn(
-            "[mask-image:radial-gradient(620px_circle_at_center,white,transparent)] fixed inset-0 -z-10",
-          )}
-        />
+        <NuqsAdapter>
+          <Navbar />
+          {children}
+          <Footer />
+          <DotPattern
+            className={cn(
+              "[mask-image:radial-gradient(620px_circle_at_center,white,transparent)] fixed inset-0 -z-10",
+            )}
+          />
+        </NuqsAdapter>
       </body>
     </html>
   );
