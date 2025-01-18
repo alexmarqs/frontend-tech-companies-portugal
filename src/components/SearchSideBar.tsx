@@ -14,58 +14,23 @@ import {
   SelectValue,
 } from "./ui/select";
 
-import { useCallback } from "react";
-import { SearchFilters, useSearchFilters } from "./hooks/useSearchFilters";
-import { useSearchFiltersParams } from "./hooks/useSearchFiltersParams";
+import { useSearchQueryParams } from "./hooks/useSearchQueryParams";
 
 type SearchSideBarProps = {
   locationOptions: string[];
   categoryOptions: string[];
-  extendedFilterUI?: (
-    filters: SearchFilters,
-    updateURL: (filters: SearchFilters) => void,
-    setFilters: (filters: SearchFilters) => void,
-    filtersNumber?: number,
-  ) => React.ReactNode;
+  extendedUI?: () => React.ReactNode;
+  onReset?: () => void;
 };
 
 export function SearchSideBar({
   locationOptions,
   categoryOptions,
-  extendedFilterUI,
+  extendedUI,
+  onReset,
 }: SearchSideBarProps) {
-  const { searchParams, filters: initialFilters } = useSearchFiltersParams();
-
-  const updateURL = useCallback(
-    (filters: SearchFilters) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.delete("page");
-
-      Object.entries(filters).forEach(([key, value]) => {
-        if (value) {
-          params.set(key, value);
-        } else {
-          params.delete(key);
-        }
-      });
-
-      window.history.pushState(null, "", `?${params.toString()}`);
-    },
-    [searchParams],
-  );
-
-  const {
-    filters,
-    filtersNumber,
-    handleSearchTerm,
-    handleCategoryChange,
-    handleLocationChange,
-    handleResetFilters,
-    setFilters,
-  } = useSearchFilters({
-    initialFilters,
-    onFiltersChange: !extendedFilterUI ? updateURL : undefined,
-  });
+  const { setSearchParams, searchParams, appliedFilters } =
+    useSearchQueryParams();
 
   return (
     <div className="w-full flex flex-col h-full gap-4 justify-between">
@@ -82,17 +47,22 @@ export function SearchSideBar({
                   id="query"
                   name="query"
                   onChange={(e) => {
-                    handleSearchTerm(e.target.value);
+                    setSearchParams(
+                      { query: e.target.value },
+                      { throttleMs: 250 },
+                    );
                   }}
-                  value={filters.query || ""}
+                  value={searchParams.query || ""}
                   placeholder="Name or description term"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
-                  value={filters.category || "all"}
-                  onValueChange={handleCategoryChange}
+                  value={searchParams.category || "all"}
+                  onValueChange={(value) =>
+                    setSearchParams({ category: value })
+                  }
                 >
                   <SelectTrigger id="category" className="w-full">
                     <SelectValue placeholder="Select a category" />
@@ -110,8 +80,10 @@ export function SearchSideBar({
               <div className="flex flex-col gap-2">
                 <Label htmlFor="location">Location</Label>
                 <Select
-                  value={filters.location || "all"}
-                  onValueChange={handleLocationChange}
+                  value={searchParams.location || "all"}
+                  onValueChange={(value) =>
+                    setSearchParams({ location: value })
+                  }
                 >
                   <SelectTrigger id="location" className="w-full">
                     <SelectValue placeholder="Select a location" />
@@ -126,25 +98,24 @@ export function SearchSideBar({
                   </SelectContent>
                 </Select>
               </div>
-              {!extendedFilterUI && (
-                <Button
-                  disabled={filtersNumber === 0}
-                  variant="outline"
-                  className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
-                  onClick={handleResetFilters}
-                >
-                  <X className="mr-[2px] h-4 w-4" />
-                  Reset filters
-                </Button>
-              )}
+
+              <Button
+                variant="outline"
+                disabled={appliedFilters.length === 0}
+                className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
+                onClick={() => {
+                  setSearchParams(null);
+                  onReset?.();
+                }}
+              >
+                <X className="mr-[2px] h-4 w-4" />
+                Reset filters
+              </Button>
+              {extendedUI && extendedUI()}
             </div>
           </div>
         </div>
       </RetroContainer>
-      <div className="w-full">
-        {extendedFilterUI &&
-          extendedFilterUI(filters, updateURL, setFilters, filtersNumber)}
-      </div>
     </div>
   );
 }

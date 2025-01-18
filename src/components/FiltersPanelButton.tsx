@@ -1,11 +1,11 @@
 "use client";
 
-import { SlidersHorizontal, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { use, useEffect, useState } from "react";
 import { SearchSideBar } from "./SearchSideBar";
-import { useSearchFiltersParams } from "./hooks/useSearchFiltersParams";
-import { Badge } from "./ui/badge";
+
+import { FiltersButton } from "./FiltersButton";
 import { Button } from "./ui/button";
 import { RetroContainer } from "./ui/retro-container";
 
@@ -22,7 +22,6 @@ export default function FiltersPanelButton({
   const segment = useSelectedLayoutSegment();
   const isCompanyListPage = segment === "(companies-list)";
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { appliedFilters } = useSearchFiltersParams();
 
   const { availableCategories = [], availableLocations = [] } = use(
     companiesCategoriesAndLocationsPromise,
@@ -46,20 +45,7 @@ export default function FiltersPanelButton({
 
   return (
     <>
-      <Button
-        asChild
-        onClick={() => setIsFilterOpen(true)}
-        className="px-3 inline-flex md:hidden hover:cursor-pointer"
-      >
-        <div className="flex items-cente gap-1">
-          <SlidersHorizontal className="shrink-0" size={16} />
-          <span>Filters</span>
-          {appliedFilters.length > 0 && (
-            <Badge className="text-xs px-2 m-0">{appliedFilters.length}</Badge>
-          )}
-        </div>
-      </Button>
-
+      <FiltersButton setIsFilterOpen={setIsFilterOpen} />
       {isFilterOpen && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50">
           <RetroContainer
@@ -77,39 +63,22 @@ export default function FiltersPanelButton({
               <SearchSideBar
                 locationOptions={availableLocations}
                 categoryOptions={availableCategories}
-                extendedFilterUI={(
-                  filters,
-                  updateURL,
-                  _setFilters,
-                  filtersNumber,
-                ) => (
-                  <div className="flex flex-col gap-2">
+                onReset={() => {
+                  setIsFilterOpen(false);
+                }}
+                extendedUI={() => (
+                  <>
                     <Button
-                      disabled={filtersNumber === 0}
-                      variant="outline"
-                      className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"
-                      onClick={() => {
-                        setIsFilterOpen(false);
-                        updateURL({
-                          query: null,
-                          category: null,
-                          location: null,
-                        });
-                      }}
-                    >
-                      Clear filters
-                    </Button>
-                    <Button
-                      className="w-full"
                       variant="secondary"
+                      className="w-full"
                       onClick={() => {
                         setIsFilterOpen(false);
-                        updateURL(filters);
                       }}
                     >
-                      Apply Filters
+                      <Search className="h-4 w-4 mr-2" />
+                      See results
                     </Button>
-                  </div>
+                  </>
                 )}
               />
             </div>

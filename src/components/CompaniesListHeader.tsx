@@ -8,28 +8,27 @@ import {
   ChevronsRight,
   Clock,
 } from "lucide-react";
-import Link from "next/link";
-import { ReadonlyURLSearchParams } from "next/navigation";
-import { usePaginationUtils } from "./hooks/usePaginationUtils";
+import { useSearchQueryParams } from "./hooks/useSearchQueryParams";
 import { Badge } from "./ui/badge";
 
 type CompaniesListHeaderProps = {
   updatedAtISODate: string;
-  currentPage: number;
   totalPages: number;
   filteredCompanies: Company[];
-  searchParams?: ReadonlyURLSearchParams;
 };
 
 export const CompaniesListHeader = ({
   updatedAtISODate,
-  currentPage,
   totalPages,
   filteredCompanies,
-  searchParams,
 }: CompaniesListHeaderProps) => {
-  const { isPreviousDisabled, isNextDisabled, createPageUrl } =
-    usePaginationUtils({ currentPage, totalPages, searchParams });
+  const {
+    setSearchParams,
+    searchParams: { page: currentPage },
+  } = useSearchQueryParams();
+
+  const isPreviousDisabled = currentPage === 1;
+  const isNextDisabled = currentPage === totalPages;
 
   return (
     <>
@@ -49,42 +48,42 @@ export const CompaniesListHeader = ({
           &nbsp;• {filteredCompanies.length}
         </span>
         <div className="ml-2 inline-flex items-center justify-center gap-1">
-          <Link
-            href={createPageUrl(1)}
+          <div
+            onClick={() => setSearchParams({ page: 1 })}
             className={cn(
-              "hover:text-foreground flex items-center justify-center",
+              "hover:text-foreground flex items-center justify-center hover:cursor-pointer",
               isPreviousDisabled && "pointer-events-none text-muted-foreground",
             )}
           >
             <ChevronsLeft className="inline" size={18} />
-          </Link>
-          <Link
-            href={createPageUrl(currentPage - 1)}
+          </div>
+          <div
+            onClick={() => setSearchParams({ page: currentPage - 1 })}
             className={cn(
-              "hover:text-foreground flex items-center justify-center",
+              "hover:text-foreground flex items-center justify-center hover:cursor-pointer",
               isPreviousDisabled && "pointer-events-none text-muted-foreground",
             )}
           >
             <ChevronLeft className="inline" size={18} />
-          </Link>
-          <Link
-            href={createPageUrl(currentPage + 1)}
+          </div>
+          <div
+            onClick={() => setSearchParams({ page: currentPage + 1 })}
             className={cn(
-              "hover:text-foreground flex items-center justify-center",
+              "hover:text-foreground flex items-center justify-center hover:cursor-pointer",
               isNextDisabled && "pointer-events-none text-muted-foreground",
             )}
           >
             <ChevronRight className="inline" size={18} />
-          </Link>
-          <Link
-            href={createPageUrl(totalPages)}
+          </div>
+          <div
+            onClick={() => setSearchParams({ page: totalPages })}
             className={cn(
-              "hover:text-foreground flex items-center justify-center",
+              "hover:text-foreground flex items-center justify-center hover:cursor-pointer",
               isNextDisabled && "pointer-events-none text-muted-foreground",
             )}
           >
             <ChevronsRight className="inline" size={18} />
-          </Link>
+          </div>
         </div>
       </Badge>
     </>

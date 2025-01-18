@@ -5,25 +5,24 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import Link from "next/link";
-import { ReadonlyURLSearchParams } from "next/navigation";
-import { usePaginationUtils } from "./hooks/usePaginationUtils";
+import { useSearchQueryParams } from "./hooks/useSearchQueryParams";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 type CompaniesListFooterProps = {
-  currentPage: number;
   totalPages: number;
-  searchParams?: ReadonlyURLSearchParams;
 };
 
 export default function CompaniesListFooter({
   totalPages,
-  currentPage,
-  searchParams,
 }: CompaniesListFooterProps) {
-  const { isPreviousDisabled, isNextDisabled, createPageUrl } =
-    usePaginationUtils({ currentPage, totalPages, searchParams });
+  const {
+    setSearchParams,
+    searchParams: { page: currentPage },
+  } = useSearchQueryParams();
+
+  const isPreviousDisabled = currentPage === 1;
+  const isNextDisabled = currentPage === totalPages;
 
   return (
     <div className="flex items-center justify-between gap-2">
@@ -36,50 +35,46 @@ export default function CompaniesListFooter({
         <Button
           className={cn(
             isPreviousDisabled && "pointer-events-none text-muted-foreground",
+            "!px-2",
           )}
           variant="outline"
           size="sm"
-          asChild
+          onClick={() => setSearchParams({ page: 1 })}
         >
-          <Link className="!px-2" href={createPageUrl(1)}>
-            <ChevronsLeft className="shrink-0" size={16} />
-          </Link>
+          <ChevronsLeft className="shrink-0" size={16} />
         </Button>
         <Button
           className={cn(
             isPreviousDisabled && "pointer-events-none text-muted-foreground",
+            "!px-2",
           )}
           variant="outline"
           size="sm"
-          asChild
+          onClick={() => setSearchParams({ page: currentPage - 1 })}
         >
-          <Link className="!px-2" href={createPageUrl(currentPage - 1)}>
-            <ChevronLeft className="shrink-0" size={16} />
-          </Link>
+          <ChevronLeft className="shrink-0" size={16} />
         </Button>
         <Button
           variant="outline"
-          asChild
           size="sm"
           className={cn(
             isNextDisabled && "pointer-events-none text-muted-foreground",
+            "!px-2",
           )}
+          onClick={() => setSearchParams({ page: currentPage + 1 })}
         >
-          <Link className="!px-2" href={createPageUrl(currentPage + 1)}>
-            <ChevronRight className="shrink-0" size={16} />
-          </Link>
+          <ChevronRight className="shrink-0" size={16} />
         </Button>
         <Button
           variant="outline"
-          asChild
           size="sm"
           className={cn(
             isNextDisabled && "pointer-events-none text-muted-foreground",
+            "!px-2",
           )}
+          onClick={() => setSearchParams({ page: totalPages })}
         >
-          <Link className="!px-2" href={createPageUrl(totalPages)}>
-            <ChevronsRight className="shrink-0" size={16} />
-          </Link>
+          <ChevronsRight className="shrink-0" size={16} />
         </Button>
       </div>
     </div>

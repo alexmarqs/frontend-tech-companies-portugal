@@ -119,8 +119,7 @@ export async function GET(request: Request) {
         ],
       },
     );
-  } catch (e: any) {
-    console.log(`${e.message}`);
+  } catch (e) {
     return new Response(`Failed to generate the og image`, {
       status: 500,
     });
