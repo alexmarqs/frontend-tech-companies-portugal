@@ -38,7 +38,7 @@ export const CompaniesListHeader = ({
         className="rounded-none bg-white px-1 gap-1 h-6 whitespace-nowrap"
       >
         <Clock size={14} />
-        Last sync: {formatDistanceToNow(new Date(updatedAtISODate))} ago
+        {formatDistanceToNow(new Date(updatedAtISODate))} ago
       </Badge>
       <Badge
         variant="outline"

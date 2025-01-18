@@ -4,7 +4,7 @@ import { Company } from "@/lib/types";
 import { matchCompanies } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import CompaniesListFooter from "./CompaniesListFooter";
 import { CompaniesListHeader } from "./CompaniesListHeader";
 import CompanyItem from "./CompanyItem";
@@ -41,6 +41,10 @@ export default function CompaniesList({
   const paginatedCompanies = filteredCompanies.slice(start, end);
   const totalPages = Math.ceil(filteredCompanies.length / PAGE_SIZE);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [searchParams]);
+
   return (
     <>
       {!paginatedCompanies.length ? (
@@ -58,7 +62,7 @@ export default function CompaniesList({
       ) : (
         <div className="flex-1 font-mono">
           <motion.div
-            className="mb-2 text-xs w-full flex flex-col md:flex-row items-center justify-between gap-2 text-muted-foreground"
+            className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -79,7 +83,7 @@ export default function CompaniesList({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.3,
-                  delay: index * 0.1,
+                  delay: index * 0.05,
                   ease: "easeOut",
                 }}
               >
