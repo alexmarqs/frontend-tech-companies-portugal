@@ -48,7 +48,7 @@ export function SearchSideBar({
                   name="query"
                   onChange={(e) => {
                     setSearchParams(
-                      { query: e.target.value },
+                      { query: e.target.value, page: 1 },
                       { throttleMs: 250 },
                     );
                   }}
@@ -61,7 +61,7 @@ export function SearchSideBar({
                 <Select
                   value={searchParams.category || "all"}
                   onValueChange={(value) =>
-                    setSearchParams({ category: value })
+                    setSearchParams({ category: value, page: 1 })
                   }
                 >
                   <SelectTrigger id="category" className="w-full">
@@ -82,7 +82,7 @@ export function SearchSideBar({
                 <Select
                   value={searchParams.location || "all"}
                   onValueChange={(value) =>
-                    setSearchParams({ location: value })
+                    setSearchParams({ location: value, page: 1 })
                   }
                 >
                   <SelectTrigger id="location" className="w-full">
