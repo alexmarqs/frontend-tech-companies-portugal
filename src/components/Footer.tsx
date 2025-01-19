@@ -11,8 +11,7 @@ export default function Footer() {
             className="underline underline-offset-[2px]"
           >
             Alexandre Marques
-          </a>{" "}
-          from 🇵🇹
+          </a>
         </p>
       </div>
     </footer>
