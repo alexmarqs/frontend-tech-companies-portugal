@@ -1,4 +1,4 @@
-import { getParsedCompaniesCategoriesAndLocations } from "@/lib/actions/companies";
+import { getParsedCompaniesCategoriesAndLocations } from "@/lib/parser/companies";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";

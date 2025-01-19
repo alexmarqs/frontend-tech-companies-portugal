@@ -13,21 +13,23 @@ export const FiltersButton = ({ setIsFilterOpen }: FiltersButtonProps) => {
   return (
     <div className="inline-flex items-center gap-2 md:hidden">
       <Button
-        asChild
         onClick={() => setIsFilterOpen(true)}
-        className="px-3 inline-flex hover:cursor-pointer"
+        className="px-3 inline-flex hover:cursor-pointer space-x-1"
+        aria-label="Open filters"
       >
-        <div className="flex items-cente gap-1">
-          <SlidersHorizontal className="shrink-0" size={16} />
-          <span>Filters</span>
-          {appliedFilters.length > 0 && (
-            <Badge className="text-xs px-2 m-0">{appliedFilters.length}</Badge>
-          )}
-        </div>
+        <SlidersHorizontal className="shrink-0" size={16} aria-hidden="true" />
+        <span>Filters</span>
+        {appliedFilters.length > 0 && (
+          <Badge className="text-xs px-2 m-0">{appliedFilters.length}</Badge>
+        )}
       </Button>
       {appliedFilters.length > 0 && (
-        <Button variant="secondary" onClick={() => setSearchParams(null)}>
-          <X className="shrink-0" size={16} />
+        <Button
+          variant="secondary"
+          onClick={() => setSearchParams(null)}
+          aria-label="Clear filters"
+        >
+          <X className="shrink-0" size={16} aria-hidden="true" />
         </Button>
       )}
     </div>

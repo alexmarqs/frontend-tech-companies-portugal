@@ -1,6 +1,6 @@
 import CompaniesList from "@/components/CompaniesList";
 import { SideBar } from "@/components/SideBar";
-import { getParsedCompaniesData } from "@/lib/actions/companies";
+import { getParsedCompaniesData } from "@/lib/parser/companies";
 
 export default async function CompaniesPage() {
   const {

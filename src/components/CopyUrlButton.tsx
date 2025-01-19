@@ -23,8 +23,16 @@ export const CopyUrlButton = () => {
   };
 
   return (
-    <Button className="h-8 rounded-md px-2 text-xs" onClick={handleClick}>
-      {isCopied ? <Check size={16} /> : <Copy size={16} />}
+    <Button
+      className="h-8 rounded-md px-2 text-xs"
+      onClick={handleClick}
+      aria-label="Copy URL"
+    >
+      {isCopied ? (
+        <Check className="shrink-0" size={16} aria-hidden="true" />
+      ) : (
+        <Copy className="shrink-0" size={16} aria-hidden="true" />
+      )}
       <span className="hidden sm:ml-1 sm:block">
         {isCopied ? "Copied!" : "Copy URL"}
       </span>

@@ -44,7 +44,7 @@ export default function FiltersPanelButton({
   }
 
   return (
-    <>
+    <div>
       <FiltersButton setIsFilterOpen={setIsFilterOpen} />
       {isFilterOpen && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50">
@@ -55,8 +55,12 @@ export default function FiltersPanelButton({
           >
             <div className="flex justify-between items-center mb-6 w-full">
               <h2 className="font-mono text-2xl font-bold">Filters</h2>
-              <Button size="icon" onClick={() => setIsFilterOpen(false)}>
-                <X className="h-4 w-4" />
+              <Button
+                size="icon"
+                onClick={() => setIsFilterOpen(false)}
+                aria-label="Close filters"
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
               </Button>
             </div>
             <div className="w-full h-full flex flex-col">
@@ -74,8 +78,9 @@ export default function FiltersPanelButton({
                       onClick={() => {
                         setIsFilterOpen(false);
                       }}
+                      aria-label="See results"
                     >
-                      <Search className="h-4 w-4 mr-2" />
+                      <Search className="h-4 w-4 mr-2" aria-hidden="true" />
                       See results
                     </Button>
                   </>
@@ -85,6 +90,6 @@ export default function FiltersPanelButton({
           </RetroContainer>
         </div>
       )}
-    </>
+    </div>
   );
 }

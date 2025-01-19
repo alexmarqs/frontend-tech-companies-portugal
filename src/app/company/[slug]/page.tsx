@@ -3,15 +3,15 @@ import { CopyUrlButton } from "@/components/CopyUrlButton";
 import { Button } from "@/components/ui/button";
 import { RetroContainer } from "@/components/ui/retro-container";
 import {
-  getParsedCompaniesData,
-  getParsedCompanyBySlug,
-} from "@/lib/actions/companies";
-import {
   APP_URL,
   defaultMetadata,
   defaultOpenGraphMetadata,
   defaultTwitterMetadata,
 } from "@/lib/metadata";
+import {
+  getParsedCompaniesData,
+  getParsedCompanyBySlug,
+} from "@/lib/parser/companies";
 import { NextParams } from "@/lib/types";
 import { Briefcase, Globe } from "lucide-react";
 import { notFound } from "next/navigation";

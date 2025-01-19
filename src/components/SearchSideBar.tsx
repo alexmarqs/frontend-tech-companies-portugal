@@ -107,8 +107,9 @@ export function SearchSideBar({
                   setSearchParams(null);
                   onReset?.();
                 }}
+                aria-label="Reset filters"
               >
-                <X className="mr-[2px] h-4 w-4" />
+                <X className="mr-[2px] h-4 w-4" aria-hidden="true" />
                 Reset filters
               </Button>
               {extendedUI && extendedUI()}
