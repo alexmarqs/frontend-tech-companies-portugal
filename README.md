@@ -2,10 +2,14 @@
 
 The main goal is to provide a better way to explore tech companies in Portugal.
 
+## Monorepo structure 📦
+
+- `apps/web`: The main web app
+
 ## Features 🚀
 
 - List of tech companies in Portugal synced with the opensource [tech-companies-in-portugal](https://github.com/marmelo/tech-companies-in-portugal) repository
-- Search capabilities 
+- Fast search capabilities
 - SEO friendly
 - Responsive design
 
