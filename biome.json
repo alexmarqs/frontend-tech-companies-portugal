@@ -39,6 +39,7 @@
     "enabled": true,
     "rules": {
       "recommended": false,
+      "suspicious": {},
       "style": {
         "useBlockStatements": "off"
       }

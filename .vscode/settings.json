@@ -3,6 +3,6 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always",
-    "source.fixAll.eslint": "never"
+    "source.fixAll.biome": "always"
   }
 }

@@ -1,56 +1,30 @@
 {
   "name": "tech-companies-portugal",
-  "version": "0.0.0",
   "private": true,
+  "author": "Alexandre Marques",
+  "workspaces": [
+    "apps/*",
+    "tooling/*"
+  ],
+  "description": "Monorepo for the Tech Companies in Portugal",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "prebuild": "npm run lint",
-    "build": "next build",
-    "start": "next start",
-    "lint": "biome check --write ./",
-    "format": "biome format --write ./"
-  },
-  "dependencies": {
-    "@radix-ui/react-collapsible": "1.1.2",
-    "@radix-ui/react-label": "2.1.1",
-    "@radix-ui/react-select": "2.1.4",
-    "@radix-ui/react-slot": "1.1.1",
-    "cheerio": "1.0.0-rc.12",
-    "class-variance-authority": "0.7.0",
-    "clsx": "2.1.0",
-    "date-fns": "3.3.1",
-    "geist": "1.3.1",
-    "lucide-react": "0.469.0",
-    "motion": "11.17.0",
-    "next": "15.1.4",
-    "nuqs": "2.3.1",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-type-animation": "3.2.0",
-    "recharts": "2.15.0",
-    "sharp": "0.33.2",
-    "slugify": "1.6.6",
-    "tailwind-merge": "2.2.1",
-    "tailwindcss-animate": "1.0.7",
-    "use-debounce": "10.0.4"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/node": "^20",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "tsx": "4.7.0",
-    "typescript": "^5"
+    "build": "turbo build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "dev": "turbo dev --parallel",
+    "dev:web": "turbo dev --filter=@tech-companies-portugal/web",
+    "start:web": "turbo start --filter=@tech-companies-portugal/web",
+    "test": "turbo test --parallel",
+    "format": "biome format --write .",
+    "lint": "turbo lint",
+    "check-types": "turbo check-types"
   },
   "engines": {
     "node": ">=22"
   },
-  "overrides": {
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
-    "react-is": "19.0.0"
-  }
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "turbo": "2.3.3"
+  },
+  "packageManager": "npm@10.9.0"
 }
