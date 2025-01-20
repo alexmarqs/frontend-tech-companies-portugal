@@ -8,9 +8,8 @@
     "start": "next start",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "check-types": "npm run ts:version && tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "ts:version": "tsc --version",
     "test": "echo 'No tests to run'"
   },
   "dependencies": {
