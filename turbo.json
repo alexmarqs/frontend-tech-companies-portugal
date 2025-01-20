@@ -1,0 +1,59 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env"
+  ],
+  "ui": "stream",
+  "tasks": {
+    "transit": {
+      "dependsOn": [
+        "^transit"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        "storybook-static/**"
+      ]
+    },
+    "check-types": {
+      "dependsOn": [
+        "^transit"
+      ]
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "start": {
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": [
+        "^transit"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ]
+    }
+  }
+}
