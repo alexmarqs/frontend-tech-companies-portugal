@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps) {
         )}
       >
         <AnalyticsProvider
-          clientId={process.env.NEXT_PUBLIC_OPEN_PANEL_CLIENT_ID!}
+          clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
         >
           <NuqsAdapter>
             <Navbar />
