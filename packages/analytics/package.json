@@ -1,0 +1,21 @@
+{
+  "name": "@tech-companies-portugal/analytics",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "lint": "biome check . --write",
+    "format": "biome format --write .",
+    "check-types": "tsc --noEmit"
+  },
+  "exports": {
+    "./client": "./src/client.tsx"
+  },
+  "dependencies": {
+    "@openpanel/nextjs": "1.0.7"
+  },
+  "devDependencies": {
+    "@tech-companies-portugal/typescript": "*",
+    "typescript": "^5"
+  }
+}

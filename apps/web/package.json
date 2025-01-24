@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check .",
+    "lint": "biome check . --write",
     "format": "biome format --write .",
     "check-types": "tsc --noEmit",
     "clean": "git clean -xdf .next .turbo node_modules",
@@ -34,7 +34,8 @@
     "slugify": "1.6.6",
     "tailwind-merge": "2.2.1",
     "tailwindcss-animate": "1.0.7",
-    "use-debounce": "10.0.4"
+    "use-debounce": "10.0.4",
+    "@tech-companies-portugal/analytics": "*"
   },
   "devDependencies": {
     "@tech-companies-portugal/typescript": "*",

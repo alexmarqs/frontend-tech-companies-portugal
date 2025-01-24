@@ -2,10 +2,7 @@
   "name": "tech-companies-portugal",
   "private": true,
   "author": "Alexandre Marques",
-  "workspaces": [
-    "apps/*",
-    "tooling/*"
-  ],
+  "workspaces": ["apps/*", "tooling/*", "packages/*"],
   "description": "Monorepo for the Tech Companies in Portugal",
   "scripts": {
     "build": "turbo build",
