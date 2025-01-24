@@ -5,6 +5,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 ## Monorepo structure 📦
 
 - `apps/web`: The main web app
+- `packages/analytics`: Analytics package
 - `tooling/typescript`: TypeScript configuration
 
 ## Features 🚀
@@ -26,6 +27,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - [Nuqs](https://nuqs.47ng.com) - URL query state management (client and server support + some other cool features out of the box)
 - [Turbo](https://turbo.build/) - Monorepo build system
 - [Vercel](https://vercel.com/) - Hosting and CI/CD
+- [OpenPanel](https://openpanel.dev/) - Analytics
 
 ## How to contribute 🤝
 
