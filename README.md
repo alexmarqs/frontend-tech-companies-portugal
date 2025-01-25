@@ -7,6 +7,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - `apps/web`: The main web app
 - `packages/analytics`: Analytics package
 - `tooling/typescript`: TypeScript configuration
+- `tooling/tailwind`: Tailwind configuration
 
 ## Features 🚀
 
