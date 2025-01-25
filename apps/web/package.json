@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@tech-companies-portugal/typescript": "*",
+    "@tech-companies-portugal/tailwind": "*",
     "@types/node": "^20",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",

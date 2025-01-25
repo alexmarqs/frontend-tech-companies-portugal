@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "scripts": {
     "clean": "git clean -xdf .turbo",
-    "lint": "biome lint . --write"
+    "lint": "biome check . --write"
   },
   "files": [
     "base.json",
     "react-lib.json",
-    "nextjs.json"
+    "nextjs.json",
+    "tsup.config.json"
   ]
 }
