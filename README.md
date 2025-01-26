@@ -5,7 +5,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 ## Monorepo structure 📦
 
 - `apps/web`: The main web app
-- `packages/analytics`: Analytics package
+- `packages/analytics`: Analytics utils
 - `tooling/typescript`: TypeScript configuration
 - `tooling/tailwind`: Tailwind configuration
 
@@ -23,6 +23,7 @@ The main goal is to provide a better way to explore tech companies in Portugal.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Shadcn UI](https://ui.shadcn.com) - UI components
 - [Vercel](https://vercel.com/) - Hosting and CI/CD
+- [Playwright](https://playwright.dev/) - E2E testing
 - [Biome](https://biomejs.dev/) - Formatting and linting
 - [Motion](https://motion.dev/) - Animation library
 - [Nuqs](https://nuqs.47ng.com) - URL query state management (client and server support + some other cool features out of the box)

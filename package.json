@@ -15,10 +15,11 @@
     "dev": "turbo dev --parallel",
     "dev:web": "turbo dev --filter=@tech-companies-portugal/web",
     "start:web": "turbo start --filter=@tech-companies-portugal/web",
-    "test": "turbo test --parallel",
     "format": "biome format --write .",
     "lint": "turbo lint",
-    "check-types": "turbo check-types"
+    "check-types": "turbo check-types",
+    "test:e2e:web": "turbo test:e2e --filter=@tech-companies-portugal/web",
+    "test": "turbo test --parallel"
   },
   "engines": {
     "node": ">=22"

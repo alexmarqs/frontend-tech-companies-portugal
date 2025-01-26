@@ -1,15 +1,25 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env"],
+  "globalDependencies": [
+    "**/.env"
+  ],
   "ui": "stream",
   "tasks": {
     "transit": {
-      "dependsOn": ["^transit"]
+      "dependsOn": [
+        "^transit"
+      ]
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "env": [],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*",
+        "!tests/**"
+      ],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
@@ -18,9 +28,24 @@
       ]
     },
     "check-types": {
-      "dependsOn": ["^transit"]
+      "dependsOn": [
+        "^transit"
+      ]
     },
     "test": {},
+    "test:e2e": {
+      "passThroughEnv": [
+        "PLAYWRIGHT_*"
+      ]
+    },
+    "@tech-companies-portugal/web#test:e2e": {
+      "passThroughEnv": [
+        "PLAYWRIGHT_*"
+      ],
+      "dependsOn": [
+        "build"
+      ]
+    },
     "test:watch": {
       "cache": false,
       "persistent": true
@@ -32,12 +57,17 @@
       "cache": false
     },
     "lint": {
-      "dependsOn": ["^transit"]
+      "dependsOn": [
+        "^transit"
+      ]
     },
     "dev": {
       "persistent": true,
       "cache": false,
-      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ]
     }
   }
 }

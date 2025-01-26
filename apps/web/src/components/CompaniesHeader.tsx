@@ -4,7 +4,10 @@ import { AnimatedCompaniesFeatures } from "./ui/AnimatedCompaniesFeatures";
 
 export default function CompaniesHeader() {
   return (
-    <section className="relative w-full overflow-hidden py-12 text-center">
+    <section
+      className="relative w-full overflow-hidden py-12 text-center"
+      data-testid="companies-header"
+    >
       <div className="absolute inset-0 z-0 bg-background">
         <Image
           src={bgHeader}

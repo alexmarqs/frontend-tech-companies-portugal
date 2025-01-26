@@ -8,7 +8,10 @@ import { Button } from "./ui/button";
 
 export default function Navbar() {
   return (
-    <header className="bg-background shadow-sm sticky top-0 z-10 py-2 font-mono font-semibold">
+    <header
+      className="bg-background shadow-sm sticky top-0 z-10 py-2 font-mono font-semibold"
+      data-testid="navbar"
+    >
       <div className="container mx-auto flex h-full items-center justify-between flex-wrap px-3">
         <Link href="/" className="flex items-center gap-1 flex-shrink-0">
           <Image
