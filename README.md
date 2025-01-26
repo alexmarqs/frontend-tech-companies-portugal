@@ -2,6 +2,8 @@
 
 The main goal is to provide a better way to explore tech companies in Portugal.
 
+![ci workflow](https://github.com/alexmarqs/tech-companies-portugal-app/actions/workflows/ci.yml/badge.svg)
+
 ## Monorepo structure 📦
 
 - `apps/web`: The main web app
