@@ -66,7 +66,7 @@ export default function CompaniesList({
               filteredCompanies={filteredCompanies}
             />
           </motion.div>
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 space-y-4" data-testid="companies-list">
             {paginatedCompanies.map((company, index) => (
               <motion.div
                 key={company.slug}

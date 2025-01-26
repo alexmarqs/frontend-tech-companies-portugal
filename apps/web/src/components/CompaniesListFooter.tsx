@@ -25,7 +25,10 @@ export default function CompaniesListFooter({
   const isNextDisabled = currentPage === totalPages;
 
   return (
-    <div className="flex items-center justify-between gap-2">
+    <div
+      className="flex items-center justify-between gap-2"
+      data-testid="companies-list-footer"
+    >
       <div className="flex basis-1/2 justify-end text-sm text-muted-foreground h-9">
         <Badge variant="outline" className="rounded-none bg-white px-1 gap-1">
           Page {currentPage} of {totalPages}
