@@ -35,7 +35,7 @@ test.describe("Homepage e2e tests", () => {
       page.getByRole("button", { name: "Reset filters" }),
     ).toBeDisabled();
 
-    // check if companies list footer is visible
+    // check if companies list footer is visible and has the correct text
     const companiesListFooter = page.getByTestId("companies-list-footer");
     await expect(companiesListFooter).toBeVisible();
     await expect(companiesListFooter.getByText("Page 1 of")).toBeVisible();

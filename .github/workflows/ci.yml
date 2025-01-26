@@ -70,10 +70,10 @@ jobs:
         run: npm run test:e2e:web
 
       - name: Upload test results
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-web
-          path: apps/web/playwright-report/
-          retention-days: 30
+          path: ./apps/web/playwright-report/
+          retention-days: 2
     
