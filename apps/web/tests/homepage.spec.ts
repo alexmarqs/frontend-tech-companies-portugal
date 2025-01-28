@@ -17,7 +17,7 @@ test.describe("Homepage e2e tests", () => {
     // check if companies list is visible
     await expect(page.getByTestId("companies-list")).toBeVisible();
 
-    // check if there are company items
+    // check if there are companies in the list (> 1)
     const companyItems = await page.getByTestId("company-item").all();
     expect(companyItems.length).toBeGreaterThan(1);
 
