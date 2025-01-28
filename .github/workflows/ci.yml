@@ -45,9 +45,10 @@ jobs:
     name: Web E2E Tests
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.42.1-jammy
     needs: [check-and-test]
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.0-noble
+      options: --user 1001
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
