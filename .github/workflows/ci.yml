@@ -45,6 +45,8 @@ jobs:
     name: Web E2E Tests
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.42.1-jammy
     needs: [check-and-test]
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -63,9 +65,6 @@ jobs:
 
       - name: Install dependencies for web
         run: npm install --filter=@tech-companies-portugal/web
-
-      - name: Install Playwright browsers
-        run: npx playwright install chromium --with-deps
 
       - name: Run Playwright tests
         run: npm run test:e2e:web
