@@ -61,11 +61,19 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: Install dependencies for web
-        run: npm install --filter=@tech-companies-portugal/web
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
+
+      - name: Install dependencies for web
+        run: npm install --filter=@tech-companies-portugal/web
 
       - name: Run Playwright tests
         run: npm run test:e2e:web
