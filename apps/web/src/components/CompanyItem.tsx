@@ -19,12 +19,14 @@ export default function CompanyItem({
       variant={isFeatured ? "featured" : "default"}
       className="w-full relative"
       data-testid="company-item"
+      aria-label={`Company: ${name}`}
     >
       <Link
         className={cn(
           "group flex w-full gap-2 p-5 hover:cursor-pointer hover:bg-muted/40",
         )}
         href={`/company/${slug}`}
+        aria-label={`View details for ${name}`}
       >
         <div className="flex w-full flex-col gap-4 ">
           <div className="flex w-full flex-wrap items-center justify-between gap-2">
@@ -42,6 +44,7 @@ export default function CompanyItem({
         <ChevronRight
           className="shrink-0 self-center text-muted-foreground"
           size={24}
+          aria-hidden="true"
         />
       </Link>
     </RetroContainer>

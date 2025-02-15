@@ -33,13 +33,17 @@ export function SearchSideBar({
     useSearchQueryParams();
 
   return (
-    <div className="w-full flex flex-col h-full gap-4 justify-between">
+    <div
+      className="w-full flex flex-col h-full gap-4 justify-between"
+      role="search"
+    >
       <RetroContainer
         variant="static"
         className="shrink-0 md:w-[290px] md:mx-auto"
       >
-        <div className="px-4 py-3 w-full">
-          <div className="mt-2">
+        <form className="px-4 py-3 w-full" aria-label="Search form">
+          <fieldset className="mt-2">
+            <legend className="sr-only">Search Filters</legend>
             <div className="space-y-4">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="query">Search term</Label>
@@ -54,6 +58,7 @@ export function SearchSideBar({
                   }}
                   value={searchParams.query || ""}
                   placeholder="Name or description term"
+                  aria-label="Search by name or description"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -63,6 +68,7 @@ export function SearchSideBar({
                   onValueChange={(value) =>
                     setSearchParams({ category: value, page: 1 })
                   }
+                  aria-label="Select a category"
                 >
                   <SelectTrigger id="category" className="w-full">
                     <SelectValue placeholder="Select a category" />
@@ -84,6 +90,7 @@ export function SearchSideBar({
                   onValueChange={(value) =>
                     setSearchParams({ location: value, page: 1 })
                   }
+                  aria-label="Select a location"
                 >
                   <SelectTrigger id="location" className="w-full">
                     <SelectValue placeholder="Select a location" />
@@ -114,8 +121,8 @@ export function SearchSideBar({
               </Button>
               {extendedUI && extendedUI()}
             </div>
-          </div>
-        </div>
+          </fieldset>
+        </form>
       </RetroContainer>
     </div>
   );

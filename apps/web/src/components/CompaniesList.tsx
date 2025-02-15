@@ -46,6 +46,7 @@ export default function CompaniesList({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
+          aria-label="No companies found"
         >
           <EmptyState
             title="No companies found"
@@ -53,7 +54,7 @@ export default function CompaniesList({
           />
         </motion.div>
       ) : (
-        <div className="flex-1 font-mono">
+        <div className="flex-1 font-mono" aria-label="Companies list">
           <motion.div
             className="mb-2 text-xs w-full flex flex-wrap items-center justify-between gap-2 text-muted-foreground"
             initial={{ opacity: 0, y: -10 }}
@@ -77,6 +78,7 @@ export default function CompaniesList({
                   delay: index * 0.05,
                   ease: "easeOut",
                 }}
+                aria-label={`Company ${company.name}`}
               >
                 <CompanyItem company={company} />
               </motion.div>

@@ -41,11 +41,13 @@ export async function generateMetadata({
 
   const title = `${company.name} - Leading Tech Company in Portugal | Explore Careers & More`;
   const description = company.description;
+  const keywords = `${company.name}, Tech Company, Careers, Portugal`;
 
   const metadata: Metadata = {
     ...defaultMetadata,
     title,
     description,
+    keywords,
     alternates: {
       canonical: `${APP_URL}/company/${slug}`,
     },
