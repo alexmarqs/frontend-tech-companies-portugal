@@ -41,7 +41,13 @@ export function SearchSideBar({
         variant="static"
         className="shrink-0 md:w-[290px] md:mx-auto"
       >
-        <form className="px-4 py-3 w-full" aria-label="Search form">
+        <form
+          className="px-4 py-3 w-full"
+          aria-label="Search form"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <fieldset className="mt-2">
             <legend className="sr-only">Search Filters</legend>
             <div className="space-y-4">
@@ -107,6 +113,7 @@ export function SearchSideBar({
               </div>
 
               <Button
+                type="button"
                 variant="outline"
                 disabled={appliedFilters.length === 0}
                 className="h-9 w-full px-2 border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive"

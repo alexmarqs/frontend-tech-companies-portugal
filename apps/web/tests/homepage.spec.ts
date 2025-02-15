@@ -26,7 +26,7 @@ test.describe("Homepage e2e tests", () => {
       page.getByRole("combobox", { name: "Category" }),
     ).toBeVisible();
     await expect(
-      page.getByRole("textbox", { name: "Search term" }),
+      page.getByRole("textbox", { name: "Search by name or description" }),
     ).toBeVisible();
     await expect(
       page.getByRole("combobox", { name: "Location" }),

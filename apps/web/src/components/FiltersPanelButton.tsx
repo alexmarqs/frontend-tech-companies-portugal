@@ -73,6 +73,7 @@ export default function FiltersPanelButton({
                 extendedUI={() => (
                   <>
                     <Button
+                      type="submit"
                       variant="secondary"
                       className="w-full"
                       onClick={() => {
