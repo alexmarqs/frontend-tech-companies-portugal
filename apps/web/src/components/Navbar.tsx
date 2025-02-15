@@ -1,6 +1,7 @@
 import { getParsedCompaniesCategoriesAndLocations } from "@/lib/parser/companies";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import ExploreButton from "./ExploreButton";
 import FiltersPanelButton from "./FiltersPanelButton";
 import { Button } from "./ui/button";
@@ -44,9 +45,11 @@ export default function Navbar() {
           role="navigation"
           aria-label="Main navigation"
         >
-          <FiltersPanelButton
-            companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
-          />
+          <Suspense>
+            <FiltersPanelButton
+              companiesCategoriesAndLocationsPromise={getParsedCompaniesCategoriesAndLocations()}
+            />
+          </Suspense>
           <ExploreButton />
           <Button asChild>
             <a
