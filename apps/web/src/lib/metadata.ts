@@ -12,10 +12,25 @@ export const APP_URL = process.env.VERCEL_URL
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: TITLE,
+  keywords: [
+    "tech companies portugal",
+    "portuguese tech companies",
+    "tech jobs portugal",
+    "portuguese startups",
+    "tech ecosystem portugal",
+    "startups",
+    "innovators",
+    "portugal tech scene",
+    "portuguese tech industry",
+  ],
   description: DESCRIPTION,
   alternates: {
     canonical: APP_URL,
   },
+  authors: [{ name: "Tech Companies Portugal" }],
+  category: "Technology",
+  creator: "Tech Companies Portugal",
+  publisher: "Tech Companies Portugal",
 };
 
 export const defaultTwitterMetadata: Metadata["twitter"] = {
